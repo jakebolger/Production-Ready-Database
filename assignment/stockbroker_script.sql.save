@@ -1,0 +1,47 @@
+
+
+
+DROP SCHEMA Internal_schema CASCADE;
+DROP SCHEMA Public_info CASCADE;
+DROP ROLE Trader;
+DROP ROLE Customer;
+
+CREATE SCHEMA Internal_schema;
+CREATE SCHEMA Public_info;
+
+CREATE ROLE Trader WITH LOGIN ENCRYPTED PASSWORD 'password';
+CREATE ROLE Customer WITH LOGIN;
+
+ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema REVOKE ALL ON TABLES FROM PUBLIC;
+ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info REVOKE ALL ON TABLES FROM PUBLIC;
+
+--granting privileges
+ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT SELECT ON TABLES TO Trader;
+--ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT INSERT ON TABLES TO Trader;
+ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO PUBLIC;
+--ALTER PRIVILEGES IN SCHEMA Public_info GRANT INSERT ON TABLES TO Trader;
+
+CREATE TABLE Public_info.companies(
+	internal_ID VARCHAR ( 50 ) PRIMARY KEY,
+	company_name VARCHAR ( 50 ) UNIQUE NOT NULL,
+	annual_revenue MONEY NOT NULL);
+
+CREATE TABLE Internal_schema.traders(
+	staff_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Trader_name VARCHAR ( 50 ) NOT NULL,
+	date_joined DATE NOT NULL);
+
+CREATE TABLE Public_info.Portfolio(
+	Portfolio_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Portfolio_name VARCHAR ( 50 ) NOT NULL);
+
+CREATE TABLE Public_info.prices(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	record_date DATE NOT NULL,
+	record_value MONEY NOT NULL);
+
+CREATE TABLE Internal_schema.positions(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	Portfolio_ID VARCHAR ( 50 ) references Public_info.Portfolio(Portfolio_ID),
+	current_stock NUMERIC (20,3) NOT NULL);
+

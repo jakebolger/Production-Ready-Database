@@ -1,0 +1,720 @@
+2022-05-01 12:57:32.973 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,60,"idle",2022-04-30 11:57:19 UTC,6/75,0,ERROR,42601,"syntax error at or near ""psql""",,,,,,"psql -E
+;",1,,"psql","client backend",,0
+2022-05-01 13:12:18.686 UTC,"postgres","c18395341_stockbroker_db",4372,"[local]",626e86db.1114,1,"idle",2022-05-01 13:10:51 UTC,9/12,0,LOG,00000,"statement: CREATE TABLESPACE assignment_tablespace LOCATION '~/assignment/c18395341';",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:12:18.686 UTC,"postgres","c18395341_stockbroker_db",4372,"[local]",626e86db.1114,2,"CREATE TABLESPACE",2022-05-01 13:10:51 UTC,9/12,0,ERROR,42P17,"tablespace location must be an absolute path",,,,,,"CREATE TABLESPACE assignment_tablespace LOCATION '~/assignment/c18395341';",,,"psql","client backend",,0
+2022-05-01 13:13:04.392 UTC,"postgres","c18395341_stockbroker_db",4372,"[local]",626e86db.1114,3,"idle",2022-05-01 13:10:51 UTC,9/13,0,LOG,00000,"statement: CREATE TABLESPACE assignment_tablespace LOCATION '/home/postgres/assignment/c18395341';",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:13:04.392 UTC,"postgres","c18395341_stockbroker_db",4372,"[local]",626e86db.1114,4,"CREATE TABLESPACE",2022-05-01 13:10:51 UTC,9/13,0,WARNING,42P17,"tablespace location should not be inside the data directory",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:14:24.989 UTC,"postgres","c18395341_stockbroker_db",4372,"[local]",626e86db.1114,5,"idle",2022-05-01 13:10:51 UTC,9/14,0,LOG,00000,"statement: SELECT spcname AS ""Name"",
+  pg_catalog.pg_get_userbyid(spcowner) AS ""Owner"",
+  pg_catalog.pg_tablespace_location(oid) AS ""Location"",
+  pg_catalog.array_to_string(spcacl, E'\n') AS ""Access privileges"",
+  spcoptions AS ""Options"",
+  pg_catalog.pg_size_pretty(pg_catalog.pg_tablespace_size(oid)) AS ""Size"",
+  pg_catalog.shobj_description(oid, 'pg_tablespace') AS ""Description""
+FROM pg_catalog.pg_tablespace
+ORDER BY 1;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:54:46.015 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,1,"idle",2022-05-01 13:54:46 UTC,10/178,0,LOG,00000,"statement: DROP SCHEMA Internal_schema CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:54:46.021 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,2,"idle",2022-05-01 13:54:46 UTC,10/179,0,LOG,00000,"statement: DROP SCHEMA Public_info CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:54:46.027 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,3,"idle",2022-05-01 13:54:46 UTC,10/180,0,LOG,00000,"statement: DROP ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:54:46.028 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,4,"idle",2022-05-01 13:54:46 UTC,10/181,0,LOG,00000,"statement: DROP ROLE Customer;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:54:46.030 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,5,"idle",2022-05-01 13:54:46 UTC,10/182,0,LOG,00000,"statement: CREATE SCHEMA Internal_schema;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:54:46.031 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,6,"idle",2022-05-01 13:54:46 UTC,10/183,0,LOG,00000,"statement: CREATE SCHEMA Public_info;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:54:46.033 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,7,"idle",2022-05-01 13:54:46 UTC,10/184,0,LOG,00000,"statement: CREATE ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:54:46.034 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,8,"idle",2022-05-01 13:54:46 UTC,10/185,0,LOG,00000,"statement: CREATE ROLE Customer WITH LOGIN;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:54:46.035 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,9,"idle",2022-05-01 13:54:46 UTC,10/186,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:54:46.036 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,10,"idle",2022-05-01 13:54:46 UTC,10/187,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:54:46.036 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,11,"idle",2022-05-01 13:54:46 UTC,10/188,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:54:46.038 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,12,"idle",2022-05-01 13:54:46 UTC,10/189,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT INSERT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:54:46.039 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,13,"idle",2022-05-01 13:54:46 UTC,10/190,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Customer;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:54:46.040 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,14,"idle",2022-05-01 13:54:46 UTC,10/191,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:54:46.041 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,15,"idle",2022-05-01 13:54:46 UTC,10/192,0,LOG,00000,"statement: CREATE TABLE Public_info.companies(
+	internal_ID VARCHAR ( 50 ) PRIMARY KEY,
+	company_name VARCHAR ( 50 ) UNIQUE NOT NULL,
+	annual_revenue MONEY NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:54:46.063 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,16,"idle",2022-05-01 13:54:46 UTC,10/193,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders(
+	staff_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Trader_name VARCHAR ( 50 ) NOT NULL,
+	date_joined DATE NOT NULL) PARTITION BY RANGE (date_joined);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:54:46.070 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,17,"CREATE TABLE",2022-05-01 13:54:46 UTC,10/193,1008,ERROR,0A000,"unique constraint on partitioned table must include all partitioning columns","PRIMARY KEY constraint on table ""traders"" lacks column ""date_joined"" which is part of the partition key.",,,,,"CREATE TABLE Internal_schema.traders(
+	staff_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Trader_name VARCHAR ( 50 ) NOT NULL,
+	date_joined DATE NOT NULL) PARTITION BY RANGE (date_joined);",,,"psql","client backend",,0
+2022-05-01 13:54:46.072 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,18,"idle",2022-05-01 13:54:46 UTC,10/194,0,LOG,00000,"statement: CREATE TABLE Public_info.Portfolio(
+	Portfolio_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Portfolio_name VARCHAR ( 50 ) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:54:46.083 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,19,"idle",2022-05-01 13:54:46 UTC,10/195,0,LOG,00000,"statement: CREATE TABLE Public_info.prices(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	record_date DATE NOT NULL,
+	record_value MONEY NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:54:46.086 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,20,"idle",2022-05-01 13:54:46 UTC,10/196,0,LOG,00000,"statement: CREATE TABLE Internal_schema.positions(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	Portfolio_ID VARCHAR ( 50 ) references Public_info.Portfolio(Portfolio_ID),
+	current_stock NUMERIC (20,3) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:54:46.088 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,21,"idle",2022-05-01 13:54:46 UTC,10/197,0,LOG,00000,"statement: CREATE index ix_annual_revenue_btree on Public_info.companies using btree (annual_revenue);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:54:46.099 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,22,"idle",2022-05-01 13:54:46 UTC,10/198,0,LOG,00000,"statement: CREATE index ix_company_name_btree on Public_info.companies using btree (company_name);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:54:46.110 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,23,"idle",2022-05-01 13:54:46 UTC,10/199,0,LOG,00000,"statement: CREATE index ix_staff_id_hash on Internal_schema.traders using hash (staff_ID);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:54:46.110 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,24,"CREATE INDEX",2022-05-01 13:54:46 UTC,10/199,0,ERROR,42P01,"relation ""internal_schema.traders"" does not exist",,,,,,"CREATE index ix_staff_id_hash on Internal_schema.traders using hash (staff_ID);",,,"psql","client backend",,0
+2022-05-01 13:54:46.111 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,25,"idle",2022-05-01 13:54:46 UTC,10/200,0,LOG,00000,"statement: CREATE index ix_date_joined_btree on Internal_schema.traders using btree (date_joined);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:54:46.111 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,26,"CREATE INDEX",2022-05-01 13:54:46 UTC,10/200,0,ERROR,42P01,"relation ""internal_schema.traders"" does not exist",,,,,,"CREATE index ix_date_joined_btree on Internal_schema.traders using btree (date_joined);",,,"psql","client backend",,0
+2022-05-01 13:54:46.111 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,27,"idle",2022-05-01 13:54:46 UTC,10/201,0,LOG,00000,"statement: CREATE index ix_Portfolio_ID on Public_info.Portfolio using hash (Portfolio_ID);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:54:46.114 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,28,"idle",2022-05-01 13:54:46 UTC,10/202,0,LOG,00000,"statement: CREATE index ix_record_value on Public_info.prices using btree (record_value);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:54:46.125 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,29,"idle",2022-05-01 13:54:46 UTC,10/203,0,LOG,00000,"statement: CREATE index ix_current_stock on Internal_schema.positions using btree (current_stock);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:54:46.136 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,30,"idle",2022-05-01 13:54:46 UTC,10/204,0,LOG,00000,"statement: CREATE TABLE Internel_schema.traders_1 PARTITION OF Internel_schema.traders
+	FOR VALUES FROM ('2022-01-01') TO ('2022-04-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:54:46.136 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,31,"CREATE TABLE",2022-05-01 13:54:46 UTC,10/204,0,ERROR,3F000,"schema ""internel_schema"" does not exist",,,,,,"CREATE TABLE Internel_schema.traders_1 PARTITION OF Internel_schema.traders
+	FOR VALUES FROM ('2022-01-01') TO ('2022-04-01');",14,,"psql","client backend",,0
+2022-05-01 13:54:46.137 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,32,"idle",2022-05-01 13:54:46 UTC,10/205,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders_2 PARTITION OF Internel_schema.traders
+	FOR VALUES FROM ('2022-04-01') TO ('2022-07-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:54:46.137 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,33,"CREATE TABLE",2022-05-01 13:54:46 UTC,10/205,0,ERROR,3F000,"schema ""internel_schema"" does not exist",,,,,,"CREATE TABLE Internal_schema.traders_2 PARTITION OF Internel_schema.traders
+	FOR VALUES FROM ('2022-04-01') TO ('2022-07-01');",,,"psql","client backend",,0
+2022-05-01 13:54:46.138 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,34,"idle",2022-05-01 13:54:46 UTC,10/206,0,LOG,00000,"statement: CREATE TABLE Internel_schema.traders_3 PARTITION OF Internel_schema.traders
+	FOR VALUES FROM ('2022-07-01') TO ('2022-10-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:54:46.138 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,35,"CREATE TABLE",2022-05-01 13:54:46 UTC,10/206,0,ERROR,3F000,"schema ""internel_schema"" does not exist",,,,,,"CREATE TABLE Internel_schema.traders_3 PARTITION OF Internel_schema.traders
+	FOR VALUES FROM ('2022-07-01') TO ('2022-10-01');",14,,"psql","client backend",,0
+2022-05-01 13:54:46.139 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,36,"idle",2022-05-01 13:54:46 UTC,10/207,0,LOG,00000,"statement: CREATE TABLE Internel_schema.traders_4 PARTITION OF Internel_schema.traders
+	FOR VALUES FROM ('2022-10-01') TO ('2023-01-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:54:46.139 UTC,"postgres","c18395341_stockbroker_db",4671,"[local]",626e9126.123f,37,"CREATE TABLE",2022-05-01 13:54:46 UTC,10/207,0,ERROR,3F000,"schema ""internel_schema"" does not exist",,,,,,"CREATE TABLE Internel_schema.traders_4 PARTITION OF Internel_schema.traders
+	FOR VALUES FROM ('2022-10-01') TO ('2023-01-01');",14,,"psql","client backend",,0
+2022-05-01 13:55:55.173 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,1,"idle",2022-05-01 13:55:55 UTC,10/219,0,LOG,00000,"statement: DROP SCHEMA Internal_schema CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:55:55.175 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,2,"idle",2022-05-01 13:55:55 UTC,10/220,0,LOG,00000,"statement: DROP SCHEMA Public_info CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:55:55.178 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,3,"idle",2022-05-01 13:55:55 UTC,10/221,0,LOG,00000,"statement: DROP ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:55:55.179 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,4,"idle",2022-05-01 13:55:55 UTC,10/222,0,LOG,00000,"statement: DROP ROLE Customer;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:55:55.180 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,5,"idle",2022-05-01 13:55:55 UTC,10/223,0,LOG,00000,"statement: CREATE SCHEMA Internal_schema;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:55:55.181 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,6,"idle",2022-05-01 13:55:55 UTC,10/224,0,LOG,00000,"statement: CREATE SCHEMA Public_info;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:55:55.182 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,7,"idle",2022-05-01 13:55:55 UTC,10/225,0,LOG,00000,"statement: CREATE ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:55:55.183 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,8,"idle",2022-05-01 13:55:55 UTC,10/226,0,LOG,00000,"statement: CREATE ROLE Customer WITH LOGIN;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:55:55.184 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,9,"idle",2022-05-01 13:55:55 UTC,10/227,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:55:55.184 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,10,"idle",2022-05-01 13:55:55 UTC,10/228,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:55:55.184 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,11,"idle",2022-05-01 13:55:55 UTC,10/229,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:55:55.185 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,12,"idle",2022-05-01 13:55:55 UTC,10/230,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT INSERT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:55:55.186 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,13,"idle",2022-05-01 13:55:55 UTC,10/231,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Customer;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:55:55.187 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,14,"idle",2022-05-01 13:55:55 UTC,10/232,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:55:55.188 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,15,"idle",2022-05-01 13:55:55 UTC,10/233,0,LOG,00000,"statement: CREATE TABLE Public_info.companies(
+	internal_ID VARCHAR ( 50 ) PRIMARY KEY,
+	company_name VARCHAR ( 50 ) UNIQUE NOT NULL,
+	annual_revenue MONEY NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:55:55.200 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,16,"idle",2022-05-01 13:55:55 UTC,10/234,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders(
+	staff_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Trader_name VARCHAR ( 50 ) NOT NULL,
+	date_joined DATE NOT NULL) PARTITION BY RANGE (date_joined);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:55:55.201 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,17,"CREATE TABLE",2022-05-01 13:55:55 UTC,10/234,1032,ERROR,0A000,"unique constraint on partitioned table must include all partitioning columns","PRIMARY KEY constraint on table ""traders"" lacks column ""date_joined"" which is part of the partition key.",,,,,"CREATE TABLE Internal_schema.traders(
+	staff_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Trader_name VARCHAR ( 50 ) NOT NULL,
+	date_joined DATE NOT NULL) PARTITION BY RANGE (date_joined);",,,"psql","client backend",,0
+2022-05-01 13:55:55.202 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,18,"idle",2022-05-01 13:55:55 UTC,10/235,0,LOG,00000,"statement: CREATE TABLE Public_info.Portfolio(
+	Portfolio_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Portfolio_name VARCHAR ( 50 ) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:55:55.214 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,19,"idle",2022-05-01 13:55:55 UTC,10/236,0,LOG,00000,"statement: CREATE TABLE Public_info.prices(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	record_date DATE NOT NULL,
+	record_value MONEY NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:55:55.216 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,20,"idle",2022-05-01 13:55:55 UTC,10/237,0,LOG,00000,"statement: CREATE TABLE Internal_schema.positions(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	Portfolio_ID VARCHAR ( 50 ) references Public_info.Portfolio(Portfolio_ID),
+	current_stock NUMERIC (20,3) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:55:55.218 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,21,"idle",2022-05-01 13:55:55 UTC,10/238,0,LOG,00000,"statement: CREATE index ix_annual_revenue_btree on Public_info.companies using btree (annual_revenue);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:55:55.229 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,22,"idle",2022-05-01 13:55:55 UTC,10/239,0,LOG,00000,"statement: CREATE index ix_company_name_btree on Public_info.companies using btree (company_name);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:55:55.242 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,23,"idle",2022-05-01 13:55:55 UTC,10/240,0,LOG,00000,"statement: CREATE index ix_staff_id_hash on Internal_schema.traders using hash (staff_ID);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:55:55.242 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,24,"CREATE INDEX",2022-05-01 13:55:55 UTC,10/240,0,ERROR,42P01,"relation ""internal_schema.traders"" does not exist",,,,,,"CREATE index ix_staff_id_hash on Internal_schema.traders using hash (staff_ID);",,,"psql","client backend",,0
+2022-05-01 13:55:55.243 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,25,"idle",2022-05-01 13:55:55 UTC,10/241,0,LOG,00000,"statement: CREATE index ix_date_joined_btree on Internal_schema.traders using btree (date_joined);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:55:55.243 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,26,"CREATE INDEX",2022-05-01 13:55:55 UTC,10/241,0,ERROR,42P01,"relation ""internal_schema.traders"" does not exist",,,,,,"CREATE index ix_date_joined_btree on Internal_schema.traders using btree (date_joined);",,,"psql","client backend",,0
+2022-05-01 13:55:55.244 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,27,"idle",2022-05-01 13:55:55 UTC,10/242,0,LOG,00000,"statement: CREATE index ix_Portfolio_ID on Public_info.Portfolio using hash (Portfolio_ID);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:55:55.245 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,28,"idle",2022-05-01 13:55:55 UTC,10/243,0,LOG,00000,"statement: CREATE index ix_record_value on Public_info.prices using btree (record_value);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:55:55.256 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,29,"idle",2022-05-01 13:55:55 UTC,10/244,0,LOG,00000,"statement: CREATE index ix_current_stock on Internal_schema.positions using btree (current_stock);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:55:55.268 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,30,"idle",2022-05-01 13:55:55 UTC,10/245,0,LOG,00000,"statement: CREATE TABLE Internel_schema.traders_1 PARTITION OF Internel_schema.traders
+	FOR VALUES FROM ('2022-01-01') TO ('2022-04-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:55:55.268 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,31,"CREATE TABLE",2022-05-01 13:55:55 UTC,10/245,0,ERROR,3F000,"schema ""internel_schema"" does not exist",,,,,,"CREATE TABLE Internel_schema.traders_1 PARTITION OF Internel_schema.traders
+	FOR VALUES FROM ('2022-01-01') TO ('2022-04-01');",14,,"psql","client backend",,0
+2022-05-01 13:55:55.269 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,32,"idle",2022-05-01 13:55:55 UTC,10/246,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders_2 PARTITION OF Internel_schema.traders
+	FOR VALUES FROM ('2022-04-01') TO ('2022-07-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:55:55.269 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,33,"CREATE TABLE",2022-05-01 13:55:55 UTC,10/246,0,ERROR,3F000,"schema ""internel_schema"" does not exist",,,,,,"CREATE TABLE Internal_schema.traders_2 PARTITION OF Internel_schema.traders
+	FOR VALUES FROM ('2022-04-01') TO ('2022-07-01');",,,"psql","client backend",,0
+2022-05-01 13:55:55.270 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,34,"idle",2022-05-01 13:55:55 UTC,10/247,0,LOG,00000,"statement: CREATE TABLE Internel_schema.traders_3 PARTITION OF Internel_schema.traders
+	FOR VALUES FROM ('2022-07-01') TO ('2022-10-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:55:55.270 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,35,"CREATE TABLE",2022-05-01 13:55:55 UTC,10/247,0,ERROR,3F000,"schema ""internel_schema"" does not exist",,,,,,"CREATE TABLE Internel_schema.traders_3 PARTITION OF Internel_schema.traders
+	FOR VALUES FROM ('2022-07-01') TO ('2022-10-01');",14,,"psql","client backend",,0
+2022-05-01 13:55:55.271 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,36,"idle",2022-05-01 13:55:55 UTC,10/248,0,LOG,00000,"statement: CREATE TABLE Internel_schema.traders_4 PARTITION OF Internel_schema.traders
+	FOR VALUES FROM ('2022-10-01') TO ('2023-01-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:55:55.271 UTC,"postgres","c18395341_stockbroker_db",4684,"[local]",626e916b.124c,37,"CREATE TABLE",2022-05-01 13:55:55 UTC,10/248,0,ERROR,3F000,"schema ""internel_schema"" does not exist",,,,,,"CREATE TABLE Internel_schema.traders_4 PARTITION OF Internel_schema.traders
+	FOR VALUES FROM ('2022-10-01') TO ('2023-01-01');",14,,"psql","client backend",,0
+2022-05-01 13:57:23.103 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,1,"idle",2022-05-01 13:57:23 UTC,10/258,0,LOG,00000,"statement: DROP SCHEMA Internal_schema CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:57:23.108 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,2,"idle",2022-05-01 13:57:23 UTC,10/259,0,LOG,00000,"statement: DROP SCHEMA Public_info CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:57:23.110 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,3,"idle",2022-05-01 13:57:23 UTC,10/260,0,LOG,00000,"statement: DROP ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:57:23.111 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,4,"idle",2022-05-01 13:57:23 UTC,10/261,0,LOG,00000,"statement: DROP ROLE Customer;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:57:23.112 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,5,"idle",2022-05-01 13:57:23 UTC,10/262,0,LOG,00000,"statement: CREATE SCHEMA Internal_schema;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:57:23.113 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,6,"idle",2022-05-01 13:57:23 UTC,10/263,0,LOG,00000,"statement: CREATE SCHEMA Public_info;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:57:23.114 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,7,"idle",2022-05-01 13:57:23 UTC,10/264,0,LOG,00000,"statement: CREATE ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:57:23.116 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,8,"idle",2022-05-01 13:57:23 UTC,10/265,0,LOG,00000,"statement: CREATE ROLE Customer WITH LOGIN;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:57:23.117 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,9,"idle",2022-05-01 13:57:23 UTC,10/266,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:57:23.117 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,10,"idle",2022-05-01 13:57:23 UTC,10/267,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:57:23.118 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,11,"idle",2022-05-01 13:57:23 UTC,10/268,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:57:23.119 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,12,"idle",2022-05-01 13:57:23 UTC,10/269,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT INSERT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:57:23.119 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,13,"idle",2022-05-01 13:57:23 UTC,10/270,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Customer;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:57:23.120 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,14,"idle",2022-05-01 13:57:23 UTC,10/271,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:57:23.121 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,15,"idle",2022-05-01 13:57:23 UTC,10/272,0,LOG,00000,"statement: CREATE TABLE Public_info.companies(
+	internal_ID VARCHAR ( 50 ) PRIMARY KEY,
+	company_name VARCHAR ( 50 ) UNIQUE NOT NULL,
+	annual_revenue MONEY NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:57:23.153 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,16,"idle",2022-05-01 13:57:23 UTC,10/273,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders(
+	staff_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Trader_name VARCHAR ( 50 ) NOT NULL,
+	date_joined DATE NOT NULL) PARTITION BY RANGE (date_joined);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:57:23.155 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,17,"CREATE TABLE",2022-05-01 13:57:23 UTC,10/273,1054,ERROR,0A000,"unique constraint on partitioned table must include all partitioning columns","PRIMARY KEY constraint on table ""traders"" lacks column ""date_joined"" which is part of the partition key.",,,,,"CREATE TABLE Internal_schema.traders(
+	staff_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Trader_name VARCHAR ( 50 ) NOT NULL,
+	date_joined DATE NOT NULL) PARTITION BY RANGE (date_joined);",,,"psql","client backend",,0
+2022-05-01 13:57:23.157 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,18,"idle",2022-05-01 13:57:23 UTC,10/274,0,LOG,00000,"statement: CREATE TABLE Public_info.Portfolio(
+	Portfolio_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Portfolio_name VARCHAR ( 50 ) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:57:23.168 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,19,"idle",2022-05-01 13:57:23 UTC,10/275,0,LOG,00000,"statement: CREATE TABLE Public_info.prices(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	record_date DATE NOT NULL,
+	record_value MONEY NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:57:23.170 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,20,"idle",2022-05-01 13:57:23 UTC,10/276,0,LOG,00000,"statement: CREATE TABLE Internal_schema.positions(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	Portfolio_ID VARCHAR ( 50 ) references Public_info.Portfolio(Portfolio_ID),
+	current_stock NUMERIC (20,3) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:57:23.172 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,21,"idle",2022-05-01 13:57:23 UTC,10/277,0,LOG,00000,"statement: CREATE index ix_annual_revenue_btree on Public_info.companies using btree (annual_revenue);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:57:23.183 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,22,"idle",2022-05-01 13:57:23 UTC,10/278,0,LOG,00000,"statement: CREATE index ix_company_name_btree on Public_info.companies using btree (company_name);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:57:23.194 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,23,"idle",2022-05-01 13:57:23 UTC,10/279,0,LOG,00000,"statement: CREATE index ix_staff_id_hash on Internal_schema.traders using hash (staff_ID);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:57:23.194 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,24,"CREATE INDEX",2022-05-01 13:57:23 UTC,10/279,0,ERROR,42P01,"relation ""internal_schema.traders"" does not exist",,,,,,"CREATE index ix_staff_id_hash on Internal_schema.traders using hash (staff_ID);",,,"psql","client backend",,0
+2022-05-01 13:57:23.195 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,25,"idle",2022-05-01 13:57:23 UTC,10/280,0,LOG,00000,"statement: CREATE index ix_date_joined_btree on Internal_schema.traders using btree (date_joined);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:57:23.195 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,26,"CREATE INDEX",2022-05-01 13:57:23 UTC,10/280,0,ERROR,42P01,"relation ""internal_schema.traders"" does not exist",,,,,,"CREATE index ix_date_joined_btree on Internal_schema.traders using btree (date_joined);",,,"psql","client backend",,0
+2022-05-01 13:57:23.195 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,27,"idle",2022-05-01 13:57:23 UTC,10/281,0,LOG,00000,"statement: CREATE index ix_Portfolio_ID on Public_info.Portfolio using hash (Portfolio_ID);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:57:23.197 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,28,"idle",2022-05-01 13:57:23 UTC,10/282,0,LOG,00000,"statement: CREATE index ix_record_value on Public_info.prices using btree (record_value);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:57:23.207 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,29,"idle",2022-05-01 13:57:23 UTC,10/283,0,LOG,00000,"statement: CREATE index ix_current_stock on Internal_schema.positions using btree (current_stock);",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:57:23.218 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,30,"idle",2022-05-01 13:57:23 UTC,10/284,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders_1 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-01-01') TO ('2022-04-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:57:23.218 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,31,"CREATE TABLE",2022-05-01 13:57:23 UTC,10/284,0,ERROR,42P01,"relation ""internal_schema.traders"" does not exist",,,,,,"CREATE TABLE Internal_schema.traders_1 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-01-01') TO ('2022-04-01');",,,"psql","client backend",,0
+2022-05-01 13:57:23.219 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,32,"idle",2022-05-01 13:57:23 UTC,10/285,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders_2 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-04-01') TO ('2022-07-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:57:23.219 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,33,"CREATE TABLE",2022-05-01 13:57:23 UTC,10/285,0,ERROR,42P01,"relation ""internal_schema.traders"" does not exist",,,,,,"CREATE TABLE Internal_schema.traders_2 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-04-01') TO ('2022-07-01');",,,"psql","client backend",,0
+2022-05-01 13:57:23.219 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,34,"idle",2022-05-01 13:57:23 UTC,10/286,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders_3 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-07-01') TO ('2022-10-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:57:23.220 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,35,"CREATE TABLE",2022-05-01 13:57:23 UTC,10/286,0,ERROR,42P01,"relation ""internal_schema.traders"" does not exist",,,,,,"CREATE TABLE Internal_schema.traders_3 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-07-01') TO ('2022-10-01');",,,"psql","client backend",,0
+2022-05-01 13:57:23.220 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,36,"idle",2022-05-01 13:57:23 UTC,10/287,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders_4 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-10-01') TO ('2023-01-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 13:57:23.220 UTC,"postgres","c18395341_stockbroker_db",4697,"[local]",626e91c3.1259,37,"CREATE TABLE",2022-05-01 13:57:23 UTC,10/287,0,ERROR,42P01,"relation ""internal_schema.traders"" does not exist",,,,,,"CREATE TABLE Internal_schema.traders_4 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-10-01') TO ('2023-01-01');",,,"psql","client backend",,0
+2022-05-01 14:00:05.164 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,1,"idle",2022-05-01 14:00:05 UTC,10/306,0,LOG,00000,"statement: DROP SCHEMA Internal_schema CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:00:05.169 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,2,"idle",2022-05-01 14:00:05 UTC,10/307,0,LOG,00000,"statement: DROP SCHEMA Public_info CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:00:05.174 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,3,"idle",2022-05-01 14:00:05 UTC,10/308,0,LOG,00000,"statement: DROP ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:00:05.175 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,4,"idle",2022-05-01 14:00:05 UTC,10/309,0,LOG,00000,"statement: DROP ROLE Customer;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:00:05.177 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,5,"idle",2022-05-01 14:00:05 UTC,10/310,0,LOG,00000,"statement: CREATE SCHEMA Internal_schema;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:00:05.178 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,6,"idle",2022-05-01 14:00:05 UTC,10/311,0,LOG,00000,"statement: CREATE SCHEMA Public_info;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:00:05.179 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,7,"idle",2022-05-01 14:00:05 UTC,10/312,0,LOG,00000,"statement: CREATE ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:00:05.180 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,8,"idle",2022-05-01 14:00:05 UTC,10/313,0,LOG,00000,"statement: CREATE ROLE Customer WITH LOGIN;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:00:05.180 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,9,"idle",2022-05-01 14:00:05 UTC,10/314,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:00:05.181 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,10,"idle",2022-05-01 14:00:05 UTC,10/315,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:00:05.181 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,11,"idle",2022-05-01 14:00:05 UTC,10/316,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:00:05.182 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,12,"idle",2022-05-01 14:00:05 UTC,10/317,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT INSERT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:00:05.183 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,13,"idle",2022-05-01 14:00:05 UTC,10/318,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Customer;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:00:05.184 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,14,"idle",2022-05-01 14:00:05 UTC,10/319,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:00:05.185 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,15,"idle",2022-05-01 14:00:05 UTC,10/320,0,LOG,00000,"statement: CREATE TABLE Public_info.companies(
+	internal_ID VARCHAR ( 50 ) PRIMARY KEY,
+	company_name VARCHAR ( 50 ) UNIQUE NOT NULL,
+	annual_revenue MONEY NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:00:05.205 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,16,"idle",2022-05-01 14:00:05 UTC,10/321,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders(
+	staff_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Trader_name VARCHAR ( 50 ) NOT NULL,
+	date_joined DATE NOT NULL) PARTITION BY RANGE (date_joined);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:00:05.206 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,17,"CREATE TABLE",2022-05-01 14:00:05 UTC,10/321,1078,ERROR,0A000,"unique constraint on partitioned table must include all partitioning columns","PRIMARY KEY constraint on table ""traders"" lacks column ""date_joined"" which is part of the partition key.",,,,,"CREATE TABLE Internal_schema.traders(
+	staff_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Trader_name VARCHAR ( 50 ) NOT NULL,
+	date_joined DATE NOT NULL) PARTITION BY RANGE (date_joined);",,,"psql","client backend",,0
+2022-05-01 14:00:05.208 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,18,"idle",2022-05-01 14:00:05 UTC,10/322,0,LOG,00000,"statement: CREATE TABLE Public_info.Portfolio(
+	Portfolio_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Portfolio_name VARCHAR ( 50 ) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:00:05.220 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,19,"idle",2022-05-01 14:00:05 UTC,10/323,0,LOG,00000,"statement: CREATE TABLE Public_info.prices(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	record_date DATE NOT NULL,
+	record_value MONEY NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:00:05.221 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,20,"idle",2022-05-01 14:00:05 UTC,10/324,0,LOG,00000,"statement: CREATE TABLE Internal_schema.positions(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	Portfolio_ID VARCHAR ( 50 ) references Public_info.Portfolio(Portfolio_ID),
+	current_stock NUMERIC (20,3) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:00:05.223 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,21,"idle",2022-05-01 14:00:05 UTC,10/325,0,LOG,00000,"statement: CREATE index ix_annual_revenue_btree on Public_info.companies using btree (annual_revenue);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:00:05.233 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,22,"idle",2022-05-01 14:00:05 UTC,10/326,0,LOG,00000,"statement: CREATE index ix_company_name_btree on Public_info.companies using btree (company_name);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:00:05.243 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,23,"idle",2022-05-01 14:00:05 UTC,10/327,0,LOG,00000,"statement: CREATE index ix_staff_id_hash on Internal_schema.traders using hash (staff_ID);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:00:05.243 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,24,"CREATE INDEX",2022-05-01 14:00:05 UTC,10/327,0,ERROR,42P01,"relation ""internal_schema.traders"" does not exist",,,,,,"CREATE index ix_staff_id_hash on Internal_schema.traders using hash (staff_ID);",,,"psql","client backend",,0
+2022-05-01 14:00:05.244 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,25,"idle",2022-05-01 14:00:05 UTC,10/328,0,LOG,00000,"statement: CREATE index ix_date_joined_btree on Internal_schema.traders using btree (date_joined);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:00:05.244 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,26,"CREATE INDEX",2022-05-01 14:00:05 UTC,10/328,0,ERROR,42P01,"relation ""internal_schema.traders"" does not exist",,,,,,"CREATE index ix_date_joined_btree on Internal_schema.traders using btree (date_joined);",,,"psql","client backend",,0
+2022-05-01 14:00:05.244 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,27,"idle",2022-05-01 14:00:05 UTC,10/329,0,LOG,00000,"statement: CREATE index ix_Portfolio_ID on Public_info.Portfolio using hash (Portfolio_ID);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:00:05.246 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,28,"idle",2022-05-01 14:00:05 UTC,10/330,0,LOG,00000,"statement: CREATE index ix_record_value on Public_info.prices using btree (record_value);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:00:05.256 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,29,"idle",2022-05-01 14:00:05 UTC,10/331,0,LOG,00000,"statement: CREATE index ix_current_stock on Internal_schema.positions using btree (current_stock);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:00:05.267 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,30,"idle",2022-05-01 14:00:05 UTC,10/332,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders_1 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-01-01') TO ('2022-04-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:00:05.267 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,31,"CREATE TABLE",2022-05-01 14:00:05 UTC,10/332,0,ERROR,42P01,"relation ""internal_schema.traders"" does not exist",,,,,,"CREATE TABLE Internal_schema.traders_1 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-01-01') TO ('2022-04-01');",,,"psql","client backend",,0
+2022-05-01 14:00:05.267 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,32,"idle",2022-05-01 14:00:05 UTC,10/333,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders_2 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-04-01') TO ('2022-07-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:00:05.267 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,33,"CREATE TABLE",2022-05-01 14:00:05 UTC,10/333,0,ERROR,42P01,"relation ""internal_schema.traders"" does not exist",,,,,,"CREATE TABLE Internal_schema.traders_2 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-04-01') TO ('2022-07-01');",,,"psql","client backend",,0
+2022-05-01 14:00:05.268 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,34,"idle",2022-05-01 14:00:05 UTC,10/334,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders_3 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-07-01') TO ('2022-10-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:00:05.268 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,35,"CREATE TABLE",2022-05-01 14:00:05 UTC,10/334,0,ERROR,42P01,"relation ""internal_schema.traders"" does not exist",,,,,,"CREATE TABLE Internal_schema.traders_3 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-07-01') TO ('2022-10-01');",,,"psql","client backend",,0
+2022-05-01 14:00:05.268 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,36,"idle",2022-05-01 14:00:05 UTC,10/335,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders_4 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-10-01') TO ('2023-01-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:00:05.268 UTC,"postgres","c18395341_stockbroker_db",4719,"[local]",626e9265.126f,37,"CREATE TABLE",2022-05-01 14:00:05 UTC,10/335,0,ERROR,42P01,"relation ""internal_schema.traders"" does not exist",,,,,,"CREATE TABLE Internal_schema.traders_4 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-10-01') TO ('2023-01-01');",,,"psql","client backend",,0
+2022-05-01 14:04:19.406 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,1,"idle",2022-05-01 14:04:19 UTC,10/363,0,LOG,00000,"statement: DROP SCHEMA Internal_schema CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:04:19.412 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,2,"idle",2022-05-01 14:04:19 UTC,10/364,0,LOG,00000,"statement: DROP SCHEMA Public_info CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:04:19.415 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,3,"idle",2022-05-01 14:04:19 UTC,10/365,0,LOG,00000,"statement: DROP ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:04:19.416 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,4,"idle",2022-05-01 14:04:19 UTC,10/366,0,LOG,00000,"statement: DROP ROLE Customer;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:04:19.417 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,5,"idle",2022-05-01 14:04:19 UTC,10/367,0,LOG,00000,"statement: CREATE SCHEMA Internal_schema;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:04:19.419 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,6,"idle",2022-05-01 14:04:19 UTC,10/368,0,LOG,00000,"statement: CREATE SCHEMA Public_info;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:04:19.420 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,7,"idle",2022-05-01 14:04:19 UTC,10/369,0,LOG,00000,"statement: CREATE ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:04:19.421 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,8,"idle",2022-05-01 14:04:19 UTC,10/370,0,LOG,00000,"statement: CREATE ROLE Customer WITH LOGIN;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:04:19.423 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,9,"idle",2022-05-01 14:04:19 UTC,10/371,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:04:19.424 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,10,"idle",2022-05-01 14:04:19 UTC,10/372,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:04:19.424 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,11,"idle",2022-05-01 14:04:19 UTC,10/373,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:04:19.426 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,12,"idle",2022-05-01 14:04:19 UTC,10/374,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT INSERT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:04:19.427 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,13,"idle",2022-05-01 14:04:19 UTC,10/375,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Customer;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:04:19.428 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,14,"idle",2022-05-01 14:04:19 UTC,10/376,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:04:19.429 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,15,"idle",2022-05-01 14:04:19 UTC,10/377,0,LOG,00000,"statement: CREATE TABLE Public_info.companies(
+	internal_ID VARCHAR ( 50 ) PRIMARY KEY,
+	company_name VARCHAR ( 50 ) UNIQUE NOT NULL,
+	annual_revenue MONEY NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:04:19.460 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,16,"idle",2022-05-01 14:04:19 UTC,10/378,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders(
+	staff_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Trader_name VARCHAR ( 50 ) NOT NULL,
+	date_joined DATE NOT NULL) PARTITION BY RANGE (date_joined);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:04:19.461 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,17,"CREATE TABLE",2022-05-01 14:04:19 UTC,10/378,1103,ERROR,0A000,"unique constraint on partitioned table must include all partitioning columns","PRIMARY KEY constraint on table ""traders"" lacks column ""date_joined"" which is part of the partition key.",,,,,"CREATE TABLE Internal_schema.traders(
+	staff_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Trader_name VARCHAR ( 50 ) NOT NULL,
+	date_joined DATE NOT NULL) PARTITION BY RANGE (date_joined);",,,"psql","client backend",,0
+2022-05-01 14:04:19.464 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,18,"idle",2022-05-01 14:04:19 UTC,10/379,0,LOG,00000,"statement: CREATE TABLE Public_info.Portfolio(
+	Portfolio_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Portfolio_name VARCHAR ( 50 ) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:04:19.475 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,19,"idle",2022-05-01 14:04:19 UTC,10/380,0,LOG,00000,"statement: CREATE TABLE Public_info.prices(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	record_date DATE NOT NULL,
+	record_value MONEY NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:04:19.477 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,20,"idle",2022-05-01 14:04:19 UTC,10/381,0,LOG,00000,"statement: CREATE TABLE Internal_schema.positions(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	Portfolio_ID VARCHAR ( 50 ) references Public_info.Portfolio(Portfolio_ID),
+	current_stock NUMERIC (20,3) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:04:19.480 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,21,"idle",2022-05-01 14:04:19 UTC,10/382,0,LOG,00000,"statement: CREATE index ix_annual_revenue_btree on Public_info.companies using btree (annual_revenue);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:04:19.491 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,22,"idle",2022-05-01 14:04:19 UTC,10/383,0,LOG,00000,"statement: CREATE index ix_company_name_btree on Public_info.companies using btree (company_name);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:04:19.502 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,23,"idle",2022-05-01 14:04:19 UTC,10/384,0,LOG,00000,"statement: CREATE index ix_staff_id_hash on Internal_schema.traders using hash (staff_ID);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:04:19.502 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,24,"CREATE INDEX",2022-05-01 14:04:19 UTC,10/384,0,ERROR,42P01,"relation ""internal_schema.traders"" does not exist",,,,,,"CREATE index ix_staff_id_hash on Internal_schema.traders using hash (staff_ID);",,,"psql","client backend",,0
+2022-05-01 14:04:19.503 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,25,"idle",2022-05-01 14:04:19 UTC,10/385,0,LOG,00000,"statement: CREATE index ix_date_joined_btree on Internal_schema.traders using btree (date_joined);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:04:19.503 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,26,"CREATE INDEX",2022-05-01 14:04:19 UTC,10/385,0,ERROR,42P01,"relation ""internal_schema.traders"" does not exist",,,,,,"CREATE index ix_date_joined_btree on Internal_schema.traders using btree (date_joined);",,,"psql","client backend",,0
+2022-05-01 14:04:19.503 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,27,"idle",2022-05-01 14:04:19 UTC,10/386,0,LOG,00000,"statement: CREATE index ix_Portfolio_ID on Public_info.Portfolio using hash (Portfolio_ID);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:04:19.505 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,28,"idle",2022-05-01 14:04:19 UTC,10/387,0,LOG,00000,"statement: CREATE index ix_record_value on Public_info.prices using btree (record_value);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:04:19.516 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,29,"idle",2022-05-01 14:04:19 UTC,10/388,0,LOG,00000,"statement: CREATE index ix_current_stock on Internal_schema.positions using btree (current_stock);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:04:19.533 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,30,"idle",2022-05-01 14:04:19 UTC,10/389,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders_1 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-01-01') TO ('2022-04-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:04:19.533 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,31,"CREATE TABLE",2022-05-01 14:04:19 UTC,10/389,0,ERROR,42P01,"relation ""internal_schema.traders"" does not exist",,,,,,"CREATE TABLE Internal_schema.traders_1 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-01-01') TO ('2022-04-01');",,,"psql","client backend",,0
+2022-05-01 14:04:19.535 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,32,"idle",2022-05-01 14:04:19 UTC,10/390,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders_2 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-04-01') TO ('2022-07-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:04:19.535 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,33,"CREATE TABLE",2022-05-01 14:04:19 UTC,10/390,0,ERROR,42P01,"relation ""internal_schema.traders"" does not exist",,,,,,"CREATE TABLE Internal_schema.traders_2 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-04-01') TO ('2022-07-01');",,,"psql","client backend",,0
+2022-05-01 14:04:19.535 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,34,"idle",2022-05-01 14:04:19 UTC,10/391,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders_3 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-07-01') TO ('2022-10-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:04:19.535 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,35,"CREATE TABLE",2022-05-01 14:04:19 UTC,10/391,0,ERROR,42P01,"relation ""internal_schema.traders"" does not exist",,,,,,"CREATE TABLE Internal_schema.traders_3 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-07-01') TO ('2022-10-01');",,,"psql","client backend",,0
+2022-05-01 14:04:19.537 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,36,"idle",2022-05-01 14:04:19 UTC,10/392,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders_4 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-10-01') TO ('2023-01-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:04:19.537 UTC,"postgres","c18395341_stockbroker_db",4747,"[local]",626e9363.128b,37,"CREATE TABLE",2022-05-01 14:04:19 UTC,10/392,0,ERROR,42P01,"relation ""internal_schema.traders"" does not exist",,,,,,"CREATE TABLE Internal_schema.traders_4 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-10-01') TO ('2023-01-01');",,,"psql","client backend",,0
+2022-05-01 14:07:33.290 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,1,"idle",2022-05-01 14:07:33 UTC,10/410,0,LOG,00000,"statement: DROP SCHEMA Internal_schema CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:07:33.294 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,2,"idle",2022-05-01 14:07:33 UTC,10/411,0,LOG,00000,"statement: DROP SCHEMA Public_info CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:07:33.303 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,3,"idle",2022-05-01 14:07:33 UTC,10/412,0,LOG,00000,"statement: DROP ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:07:33.304 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,4,"idle",2022-05-01 14:07:33 UTC,10/413,0,LOG,00000,"statement: DROP ROLE Customer;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:07:33.305 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,5,"idle",2022-05-01 14:07:33 UTC,10/414,0,LOG,00000,"statement: CREATE SCHEMA Internal_schema;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:07:33.307 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,6,"idle",2022-05-01 14:07:33 UTC,10/415,0,LOG,00000,"statement: CREATE SCHEMA Public_info;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:07:33.308 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,7,"idle",2022-05-01 14:07:33 UTC,10/416,0,LOG,00000,"statement: CREATE ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:07:33.309 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,8,"idle",2022-05-01 14:07:33 UTC,10/417,0,LOG,00000,"statement: CREATE ROLE Customer WITH LOGIN;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:07:33.310 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,9,"idle",2022-05-01 14:07:33 UTC,10/418,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:07:33.311 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,10,"idle",2022-05-01 14:07:33 UTC,10/419,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:07:33.312 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,11,"idle",2022-05-01 14:07:33 UTC,10/420,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:07:33.315 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,12,"idle",2022-05-01 14:07:33 UTC,10/421,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT INSERT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:07:33.315 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,13,"idle",2022-05-01 14:07:33 UTC,10/422,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Customer;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:07:33.316 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,14,"idle",2022-05-01 14:07:33 UTC,10/423,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:07:33.317 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,15,"idle",2022-05-01 14:07:33 UTC,10/424,0,LOG,00000,"statement: CREATE TABLE Public_info.companies(
+	internal_ID VARCHAR ( 50 ) PRIMARY KEY,
+	company_name VARCHAR ( 50 ) UNIQUE NOT NULL,
+	annual_revenue MONEY NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:07:33.341 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,16,"idle",2022-05-01 14:07:33 UTC,10/425,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders(
+	staff_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Trader_name VARCHAR ( 50 ) NOT NULL,
+	date_joined date NOT NULL) PARTITION BY RANGE (date_joined);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:07:33.342 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,17,"CREATE TABLE",2022-05-01 14:07:33 UTC,10/425,1125,ERROR,0A000,"unique constraint on partitioned table must include all partitioning columns","PRIMARY KEY constraint on table ""traders"" lacks column ""date_joined"" which is part of the partition key.",,,,,"CREATE TABLE Internal_schema.traders(
+	staff_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Trader_name VARCHAR ( 50 ) NOT NULL,
+	date_joined date NOT NULL) PARTITION BY RANGE (date_joined);",,,"psql","client backend",,0
+2022-05-01 14:07:33.346 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,18,"idle",2022-05-01 14:07:33 UTC,10/426,0,LOG,00000,"statement: CREATE TABLE Public_info.Portfolio(
+	Portfolio_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Portfolio_name VARCHAR ( 50 ) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:07:33.358 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,19,"idle",2022-05-01 14:07:33 UTC,10/427,0,LOG,00000,"statement: CREATE TABLE Public_info.prices(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	record_date DATE NOT NULL,
+	record_value MONEY NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:07:33.361 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,20,"idle",2022-05-01 14:07:33 UTC,10/428,0,LOG,00000,"statement: CREATE TABLE Internal_schema.positions(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	Portfolio_ID VARCHAR ( 50 ) references Public_info.Portfolio(Portfolio_ID),
+	current_stock NUMERIC (20,3) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:07:33.363 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,21,"idle",2022-05-01 14:07:33 UTC,10/429,0,LOG,00000,"statement: CREATE index ix_annual_revenue_btree on Public_info.companies using btree (annual_revenue);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:07:33.380 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,22,"idle",2022-05-01 14:07:33 UTC,10/430,0,LOG,00000,"statement: CREATE index ix_company_name_btree on Public_info.companies using btree (company_name);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:07:33.392 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,23,"idle",2022-05-01 14:07:33 UTC,10/431,0,LOG,00000,"statement: CREATE index ix_staff_id_hash on Internal_schema.traders using hash (staff_ID);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:07:33.392 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,24,"CREATE INDEX",2022-05-01 14:07:33 UTC,10/431,0,ERROR,42P01,"relation ""internal_schema.traders"" does not exist",,,,,,"CREATE index ix_staff_id_hash on Internal_schema.traders using hash (staff_ID);",,,"psql","client backend",,0
+2022-05-01 14:07:33.393 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,25,"idle",2022-05-01 14:07:33 UTC,10/432,0,LOG,00000,"statement: CREATE index ix_date_joined_btree on Internal_schema.traders using btree (date_joined);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:07:33.393 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,26,"CREATE INDEX",2022-05-01 14:07:33 UTC,10/432,0,ERROR,42P01,"relation ""internal_schema.traders"" does not exist",,,,,,"CREATE index ix_date_joined_btree on Internal_schema.traders using btree (date_joined);",,,"psql","client backend",,0
+2022-05-01 14:07:33.393 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,27,"idle",2022-05-01 14:07:33 UTC,10/433,0,LOG,00000,"statement: CREATE index ix_Portfolio_ID on Public_info.Portfolio using hash (Portfolio_ID);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:07:33.396 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,28,"idle",2022-05-01 14:07:33 UTC,10/434,0,LOG,00000,"statement: CREATE index ix_record_value on Public_info.prices using btree (record_value);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:07:33.409 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,29,"idle",2022-05-01 14:07:33 UTC,10/435,0,LOG,00000,"statement: CREATE index ix_current_stock on Internal_schema.positions using btree (current_stock);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:07:33.420 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,30,"idle",2022-05-01 14:07:33 UTC,10/436,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders_1 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-01-01') TO ('2022-04-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:07:33.420 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,31,"CREATE TABLE",2022-05-01 14:07:33 UTC,10/436,0,ERROR,42P01,"relation ""internal_schema.traders"" does not exist",,,,,,"CREATE TABLE Internal_schema.traders_1 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-01-01') TO ('2022-04-01');",,,"psql","client backend",,0
+2022-05-01 14:07:33.421 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,32,"idle",2022-05-01 14:07:33 UTC,10/437,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders_2 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-04-01') TO ('2022-07-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:07:33.421 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,33,"CREATE TABLE",2022-05-01 14:07:33 UTC,10/437,0,ERROR,42P01,"relation ""internal_schema.traders"" does not exist",,,,,,"CREATE TABLE Internal_schema.traders_2 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-04-01') TO ('2022-07-01');",,,"psql","client backend",,0
+2022-05-01 14:07:33.421 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,34,"idle",2022-05-01 14:07:33 UTC,10/438,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders_3 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-07-01') TO ('2022-10-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:07:33.421 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,35,"CREATE TABLE",2022-05-01 14:07:33 UTC,10/438,0,ERROR,42P01,"relation ""internal_schema.traders"" does not exist",,,,,,"CREATE TABLE Internal_schema.traders_3 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-07-01') TO ('2022-10-01');",,,"psql","client backend",,0
+2022-05-01 14:07:33.423 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,36,"idle",2022-05-01 14:07:33 UTC,10/439,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders_4 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-10-01') TO ('2023-01-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:07:33.423 UTC,"postgres","c18395341_stockbroker_db",4774,"[local]",626e9425.12a6,37,"CREATE TABLE",2022-05-01 14:07:33 UTC,10/439,0,ERROR,42P01,"relation ""internal_schema.traders"" does not exist",,,,,,"CREATE TABLE Internal_schema.traders_4 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-10-01') TO ('2023-01-01');",,,"psql","client backend",,0
+2022-05-01 14:10:19.783 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,1,"idle",2022-05-01 14:10:19 UTC,10/457,0,LOG,00000,"statement: DROP SCHEMA Internal_schema CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:19.787 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,2,"idle",2022-05-01 14:10:19 UTC,10/458,0,LOG,00000,"statement: DROP SCHEMA Public_info CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:19.791 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,3,"idle",2022-05-01 14:10:19 UTC,10/459,0,LOG,00000,"statement: DROP ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:19.793 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,4,"idle",2022-05-01 14:10:19 UTC,10/460,0,LOG,00000,"statement: DROP ROLE Customer;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:19.794 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,5,"idle",2022-05-01 14:10:19 UTC,10/461,0,LOG,00000,"statement: CREATE SCHEMA Internal_schema;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:19.796 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,6,"idle",2022-05-01 14:10:19 UTC,10/462,0,LOG,00000,"statement: CREATE SCHEMA Public_info;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:19.797 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,7,"idle",2022-05-01 14:10:19 UTC,10/463,0,LOG,00000,"statement: CREATE ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:19.799 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,8,"idle",2022-05-01 14:10:19 UTC,10/464,0,LOG,00000,"statement: CREATE ROLE Customer WITH LOGIN;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:19.801 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,9,"idle",2022-05-01 14:10:19 UTC,10/465,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:19.802 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,10,"idle",2022-05-01 14:10:19 UTC,10/466,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:19.802 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,11,"idle",2022-05-01 14:10:19 UTC,10/467,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:19.804 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,12,"idle",2022-05-01 14:10:19 UTC,10/468,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT INSERT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:19.805 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,13,"idle",2022-05-01 14:10:19 UTC,10/469,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Customer;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:19.806 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,14,"idle",2022-05-01 14:10:19 UTC,10/470,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:19.808 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,15,"idle",2022-05-01 14:10:19 UTC,10/471,0,LOG,00000,"statement: CREATE TABLE Public_info.companies(
+	internal_ID VARCHAR ( 50 ) PRIMARY KEY,
+	company_name VARCHAR ( 50 ) UNIQUE NOT NULL,
+	annual_revenue MONEY NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:19.839 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,16,"idle",2022-05-01 14:10:19 UTC,10/472,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders(
+	staff_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Trader_name VARCHAR ( 50 ) NOT NULL,
+	date_joined date NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:19.851 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,17,"idle",2022-05-01 14:10:19 UTC,10/473,0,LOG,00000,"statement: CREATE TABLE Public_info.Portfolio(
+	Portfolio_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Portfolio_name VARCHAR ( 50 ) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:19.864 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,18,"idle",2022-05-01 14:10:19 UTC,10/474,0,ERROR,42601,"syntax error at or near ""PARTITIONED""",,,,,,"CREATE TABLE Public_info.prices(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	record_date date NOT NULL,
+	record_value MONEY NOT NULL) PARTITIONED BY RANGE (record_value);",166,,"psql","client backend",,0
+2022-05-01 14:10:19.866 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,19,"idle",2022-05-01 14:10:19 UTC,10/475,0,LOG,00000,"statement: CREATE TABLE Internal_schema.positions(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	Portfolio_ID VARCHAR ( 50 ) references Public_info.Portfolio(Portfolio_ID),
+	current_stock NUMERIC (20,3) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:19.868 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,20,"idle",2022-05-01 14:10:19 UTC,10/476,0,LOG,00000,"statement: CREATE index ix_annual_revenue_btree on Public_info.companies using btree (annual_revenue);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:19.879 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,21,"idle",2022-05-01 14:10:19 UTC,10/477,0,LOG,00000,"statement: CREATE index ix_company_name_btree on Public_info.companies using btree (company_name);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:19.891 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,22,"idle",2022-05-01 14:10:19 UTC,10/478,0,LOG,00000,"statement: CREATE index ix_staff_id_hash on Internal_schema.traders using hash (staff_ID);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:19.892 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,23,"idle",2022-05-01 14:10:19 UTC,10/479,0,LOG,00000,"statement: CREATE index ix_date_joined_btree on Internal_schema.traders using btree (date_joined);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:19.903 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,24,"idle",2022-05-01 14:10:19 UTC,10/480,0,LOG,00000,"statement: CREATE index ix_Portfolio_ID on Public_info.Portfolio using hash (Portfolio_ID);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:19.905 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,25,"idle",2022-05-01 14:10:19 UTC,10/481,0,LOG,00000,"statement: CREATE index ix_record_value on Public_info.prices using btree (record_value);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:19.905 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,26,"CREATE INDEX",2022-05-01 14:10:19 UTC,10/481,0,ERROR,42P01,"relation ""public_info.prices"" does not exist",,,,,,"CREATE index ix_record_value on Public_info.prices using btree (record_value);",,,"psql","client backend",,0
+2022-05-01 14:10:19.906 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,27,"idle",2022-05-01 14:10:19 UTC,10/482,0,LOG,00000,"statement: CREATE index ix_current_stock on Internal_schema.positions using btree (current_stock);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:19.917 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,28,"idle",2022-05-01 14:10:19 UTC,10/483,0,LOG,00000,"statement: CREATE TABLE Public_info.traders_1 PARTITION OF Public_info.prices
+	FOR VALUES FROM ('2022-01-01') TO ('2022-04-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:19.918 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,29,"CREATE TABLE",2022-05-01 14:10:19 UTC,10/483,0,ERROR,42P01,"relation ""public_info.prices"" does not exist",,,,,,"CREATE TABLE Public_info.traders_1 PARTITION OF Public_info.prices
+	FOR VALUES FROM ('2022-01-01') TO ('2022-04-01');",,,"psql","client backend",,0
+2022-05-01 14:10:19.919 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,30,"idle",2022-05-01 14:10:19 UTC,10/484,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders_2 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-04-01') TO ('2022-07-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:19.920 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,31,"CREATE TABLE",2022-05-01 14:10:19 UTC,10/484,1158,ERROR,42P17,"""traders"" is not partitioned",,,,,,"CREATE TABLE Internal_schema.traders_2 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-04-01') TO ('2022-07-01');",,,"psql","client backend",,0
+2022-05-01 14:10:19.924 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,32,"idle",2022-05-01 14:10:19 UTC,10/485,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders_3 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-07-01') TO ('2022-10-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:19.924 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,33,"CREATE TABLE",2022-05-01 14:10:19 UTC,10/485,1159,ERROR,42P17,"""traders"" is not partitioned",,,,,,"CREATE TABLE Internal_schema.traders_3 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-07-01') TO ('2022-10-01');",,,"psql","client backend",,0
+2022-05-01 14:10:19.925 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,34,"idle",2022-05-01 14:10:19 UTC,10/486,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders_4 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-10-01') TO ('2023-01-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:19.925 UTC,"postgres","c18395341_stockbroker_db",4794,"[local]",626e94cb.12ba,35,"CREATE TABLE",2022-05-01 14:10:19 UTC,10/486,1160,ERROR,42P17,"""traders"" is not partitioned",,,,,,"CREATE TABLE Internal_schema.traders_4 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-10-01') TO ('2023-01-01');",,,"psql","client backend",,0
+2022-05-01 14:10:34.448 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,1,"idle",2022-05-01 14:10:34 UTC,10/490,0,LOG,00000,"statement: DROP SCHEMA Internal_schema CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:34.450 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,2,"idle",2022-05-01 14:10:34 UTC,10/491,0,LOG,00000,"statement: DROP SCHEMA Public_info CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:34.453 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,3,"idle",2022-05-01 14:10:34 UTC,10/492,0,LOG,00000,"statement: DROP ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:34.454 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,4,"idle",2022-05-01 14:10:34 UTC,10/493,0,LOG,00000,"statement: DROP ROLE Customer;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:34.455 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,5,"idle",2022-05-01 14:10:34 UTC,10/494,0,LOG,00000,"statement: CREATE SCHEMA Internal_schema;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:34.456 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,6,"idle",2022-05-01 14:10:34 UTC,10/495,0,LOG,00000,"statement: CREATE SCHEMA Public_info;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:34.457 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,7,"idle",2022-05-01 14:10:34 UTC,10/496,0,LOG,00000,"statement: CREATE ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:34.458 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,8,"idle",2022-05-01 14:10:34 UTC,10/497,0,LOG,00000,"statement: CREATE ROLE Customer WITH LOGIN;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:34.459 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,9,"idle",2022-05-01 14:10:34 UTC,10/498,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:34.459 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,10,"idle",2022-05-01 14:10:34 UTC,10/499,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:34.460 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,11,"idle",2022-05-01 14:10:34 UTC,10/500,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:34.461 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,12,"idle",2022-05-01 14:10:34 UTC,10/501,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT INSERT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:34.461 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,13,"idle",2022-05-01 14:10:34 UTC,10/502,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Customer;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:34.463 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,14,"idle",2022-05-01 14:10:34 UTC,10/503,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:34.463 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,15,"idle",2022-05-01 14:10:34 UTC,10/504,0,LOG,00000,"statement: CREATE TABLE Public_info.companies(
+	internal_ID VARCHAR ( 50 ) PRIMARY KEY,
+	company_name VARCHAR ( 50 ) UNIQUE NOT NULL,
+	annual_revenue MONEY NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:34.494 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,16,"idle",2022-05-01 14:10:34 UTC,10/505,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders(
+	staff_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Trader_name VARCHAR ( 50 ) NOT NULL,
+	date_joined date NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:34.505 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,17,"idle",2022-05-01 14:10:34 UTC,10/506,0,LOG,00000,"statement: CREATE TABLE Public_info.Portfolio(
+	Portfolio_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Portfolio_name VARCHAR ( 50 ) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:34.517 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,18,"idle",2022-05-01 14:10:34 UTC,10/507,0,ERROR,42601,"syntax error at or near ""PARTITIONED""",,,,,,"CREATE TABLE Public_info.prices(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	record_date date NOT NULL,
+	record_value MONEY NOT NULL) PARTITIONED BY RANGE (record_value);",166,,"psql","client backend",,0
+2022-05-01 14:10:34.518 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,19,"idle",2022-05-01 14:10:34 UTC,10/508,0,LOG,00000,"statement: CREATE TABLE Internal_schema.positions(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	Portfolio_ID VARCHAR ( 50 ) references Public_info.Portfolio(Portfolio_ID),
+	current_stock NUMERIC (20,3) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:34.520 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,20,"idle",2022-05-01 14:10:34 UTC,10/509,0,LOG,00000,"statement: CREATE index ix_annual_revenue_btree on Public_info.companies using btree (annual_revenue);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:34.533 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,21,"idle",2022-05-01 14:10:34 UTC,10/510,0,LOG,00000,"statement: CREATE index ix_company_name_btree on Public_info.companies using btree (company_name);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:34.544 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,22,"idle",2022-05-01 14:10:34 UTC,10/511,0,LOG,00000,"statement: CREATE index ix_staff_id_hash on Internal_schema.traders using hash (staff_ID);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:34.545 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,23,"idle",2022-05-01 14:10:34 UTC,10/512,0,LOG,00000,"statement: CREATE index ix_date_joined_btree on Internal_schema.traders using btree (date_joined);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:34.556 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,24,"idle",2022-05-01 14:10:34 UTC,10/513,0,LOG,00000,"statement: CREATE index ix_Portfolio_ID on Public_info.Portfolio using hash (Portfolio_ID);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:34.557 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,25,"idle",2022-05-01 14:10:34 UTC,10/514,0,LOG,00000,"statement: CREATE index ix_record_value on Public_info.prices using btree (record_value);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:34.557 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,26,"CREATE INDEX",2022-05-01 14:10:34 UTC,10/514,0,ERROR,42P01,"relation ""public_info.prices"" does not exist",,,,,,"CREATE index ix_record_value on Public_info.prices using btree (record_value);",,,"psql","client backend",,0
+2022-05-01 14:10:34.558 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,27,"idle",2022-05-01 14:10:34 UTC,10/515,0,LOG,00000,"statement: CREATE index ix_current_stock on Internal_schema.positions using btree (current_stock);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:34.570 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,28,"idle",2022-05-01 14:10:34 UTC,10/516,0,LOG,00000,"statement: CREATE TABLE Public_info.traders_1 PARTITION OF Public_info.prices
+	FOR VALUES FROM ('2022-01-01') TO ('2022-04-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:34.570 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,29,"CREATE TABLE",2022-05-01 14:10:34 UTC,10/516,0,ERROR,42P01,"relation ""public_info.prices"" does not exist",,,,,,"CREATE TABLE Public_info.traders_1 PARTITION OF Public_info.prices
+	FOR VALUES FROM ('2022-01-01') TO ('2022-04-01');",,,"psql","client backend",,0
+2022-05-01 14:10:34.570 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,30,"idle",2022-05-01 14:10:34 UTC,10/517,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders_2 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-04-01') TO ('2022-07-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:34.571 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,31,"CREATE TABLE",2022-05-01 14:10:34 UTC,10/517,1183,ERROR,42P17,"""traders"" is not partitioned",,,,,,"CREATE TABLE Internal_schema.traders_2 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-04-01') TO ('2022-07-01');",,,"psql","client backend",,0
+2022-05-01 14:10:34.574 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,32,"idle",2022-05-01 14:10:34 UTC,10/518,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders_3 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-07-01') TO ('2022-10-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:34.575 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,33,"CREATE TABLE",2022-05-01 14:10:34 UTC,10/518,1184,ERROR,42P17,"""traders"" is not partitioned",,,,,,"CREATE TABLE Internal_schema.traders_3 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-07-01') TO ('2022-10-01');",,,"psql","client backend",,0
+2022-05-01 14:10:34.577 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,34,"idle",2022-05-01 14:10:34 UTC,10/519,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders_4 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-10-01') TO ('2023-01-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:34.577 UTC,"postgres","c18395341_stockbroker_db",4798,"[local]",626e94da.12be,35,"CREATE TABLE",2022-05-01 14:10:34 UTC,10/519,1185,ERROR,42P17,"""traders"" is not partitioned",,,,,,"CREATE TABLE Internal_schema.traders_4 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-10-01') TO ('2023-01-01');",,,"psql","client backend",,0
+2022-05-01 14:10:59.295 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,1,"idle",2022-05-01 14:10:59 UTC,10/535,0,LOG,00000,"statement: DROP SCHEMA Internal_schema CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:59.298 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,2,"idle",2022-05-01 14:10:59 UTC,10/536,0,LOG,00000,"statement: DROP SCHEMA Public_info CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:59.301 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,3,"idle",2022-05-01 14:10:59 UTC,10/537,0,LOG,00000,"statement: DROP ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:59.302 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,4,"idle",2022-05-01 14:10:59 UTC,10/538,0,LOG,00000,"statement: DROP ROLE Customer;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:59.303 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,5,"idle",2022-05-01 14:10:59 UTC,10/539,0,LOG,00000,"statement: CREATE SCHEMA Internal_schema;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:59.304 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,6,"idle",2022-05-01 14:10:59 UTC,10/540,0,LOG,00000,"statement: CREATE SCHEMA Public_info;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:59.305 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,7,"idle",2022-05-01 14:10:59 UTC,10/541,0,LOG,00000,"statement: CREATE ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:59.306 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,8,"idle",2022-05-01 14:10:59 UTC,10/542,0,LOG,00000,"statement: CREATE ROLE Customer WITH LOGIN;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:59.307 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,9,"idle",2022-05-01 14:10:59 UTC,10/543,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:59.308 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,10,"idle",2022-05-01 14:10:59 UTC,10/544,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:59.309 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,11,"idle",2022-05-01 14:10:59 UTC,10/545,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:59.310 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,12,"idle",2022-05-01 14:10:59 UTC,10/546,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT INSERT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:59.311 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,13,"idle",2022-05-01 14:10:59 UTC,10/547,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Customer;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:59.312 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,14,"idle",2022-05-01 14:10:59 UTC,10/548,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:59.313 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,15,"idle",2022-05-01 14:10:59 UTC,10/549,0,LOG,00000,"statement: CREATE TABLE Public_info.companies(
+	internal_ID VARCHAR ( 50 ) PRIMARY KEY,
+	company_name VARCHAR ( 50 ) UNIQUE NOT NULL,
+	annual_revenue MONEY NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:59.344 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,16,"idle",2022-05-01 14:10:59 UTC,10/550,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders(
+	staff_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Trader_name VARCHAR ( 50 ) NOT NULL,
+	date_joined date NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:59.356 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,17,"idle",2022-05-01 14:10:59 UTC,10/551,0,LOG,00000,"statement: CREATE TABLE Public_info.Portfolio(
+	Portfolio_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Portfolio_name VARCHAR ( 50 ) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:59.367 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,18,"idle",2022-05-01 14:10:59 UTC,10/552,0,LOG,00000,"statement: CREATE TABLE Public_info.prices(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	record_date date NOT NULL,
+	record_value MONEY NOT NULL) PARTITION BY RANGE (record_value);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:59.369 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,19,"idle",2022-05-01 14:10:59 UTC,10/553,0,LOG,00000,"statement: CREATE TABLE Internal_schema.positions(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	Portfolio_ID VARCHAR ( 50 ) references Public_info.Portfolio(Portfolio_ID),
+	current_stock NUMERIC (20,3) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:59.371 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,20,"idle",2022-05-01 14:10:59 UTC,10/554,0,LOG,00000,"statement: CREATE index ix_annual_revenue_btree on Public_info.companies using btree (annual_revenue);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:59.383 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,21,"idle",2022-05-01 14:10:59 UTC,10/555,0,LOG,00000,"statement: CREATE index ix_company_name_btree on Public_info.companies using btree (company_name);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:59.394 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,22,"idle",2022-05-01 14:10:59 UTC,10/556,0,LOG,00000,"statement: CREATE index ix_staff_id_hash on Internal_schema.traders using hash (staff_ID);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:59.395 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,23,"idle",2022-05-01 14:10:59 UTC,10/557,0,LOG,00000,"statement: CREATE index ix_date_joined_btree on Internal_schema.traders using btree (date_joined);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:59.407 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,24,"idle",2022-05-01 14:10:59 UTC,10/558,0,LOG,00000,"statement: CREATE index ix_Portfolio_ID on Public_info.Portfolio using hash (Portfolio_ID);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:59.409 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,25,"idle",2022-05-01 14:10:59 UTC,10/559,0,LOG,00000,"statement: CREATE index ix_record_value on Public_info.prices using btree (record_value);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:59.410 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,26,"idle",2022-05-01 14:10:59 UTC,10/560,0,LOG,00000,"statement: CREATE index ix_current_stock on Internal_schema.positions using btree (current_stock);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:59.421 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,27,"idle",2022-05-01 14:10:59 UTC,10/561,0,LOG,00000,"statement: CREATE TABLE Public_info.traders_1 PARTITION OF Public_info.prices
+	FOR VALUES FROM ('2022-01-01') TO ('2022-04-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:59.421 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,28,"CREATE TABLE",2022-05-01 14:10:59 UTC,10/561,1215,ERROR,22P02,"invalid input syntax for type money: ""2022-01-01""",,,,,,"CREATE TABLE Public_info.traders_1 PARTITION OF Public_info.prices
+	FOR VALUES FROM ('2022-01-01') TO ('2022-04-01');",86,,"psql","client backend",,0
+2022-05-01 14:10:59.423 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,29,"idle",2022-05-01 14:10:59 UTC,10/562,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders_2 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-04-01') TO ('2022-07-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:59.424 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,30,"CREATE TABLE",2022-05-01 14:10:59 UTC,10/562,1216,ERROR,42P17,"""traders"" is not partitioned",,,,,,"CREATE TABLE Internal_schema.traders_2 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-04-01') TO ('2022-07-01');",,,"psql","client backend",,0
+2022-05-01 14:10:59.425 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,31,"idle",2022-05-01 14:10:59 UTC,10/563,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders_3 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-07-01') TO ('2022-10-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:59.426 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,32,"CREATE TABLE",2022-05-01 14:10:59 UTC,10/563,1217,ERROR,42P17,"""traders"" is not partitioned",,,,,,"CREATE TABLE Internal_schema.traders_3 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-07-01') TO ('2022-10-01');",,,"psql","client backend",,0
+2022-05-01 14:10:59.426 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,33,"idle",2022-05-01 14:10:59 UTC,10/564,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders_4 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-10-01') TO ('2023-01-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:10:59.427 UTC,"postgres","c18395341_stockbroker_db",4803,"[local]",626e94f3.12c3,34,"CREATE TABLE",2022-05-01 14:10:59 UTC,10/564,1218,ERROR,42P17,"""traders"" is not partitioned",,,,,,"CREATE TABLE Internal_schema.traders_4 PARTITION OF Internal_schema.traders
+	FOR VALUES FROM ('2022-10-01') TO ('2023-01-01');",,,"psql","client backend",,0
+2022-05-01 14:13:27.217 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,1,"idle",2022-05-01 14:13:27 UTC,10/586,0,LOG,00000,"statement: DROP SCHEMA Internal_schema CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:13:27.221 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,2,"idle",2022-05-01 14:13:27 UTC,10/587,0,LOG,00000,"statement: DROP SCHEMA Public_info CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:13:27.225 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,3,"idle",2022-05-01 14:13:27 UTC,10/588,0,LOG,00000,"statement: DROP ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:13:27.226 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,4,"idle",2022-05-01 14:13:27 UTC,10/589,0,LOG,00000,"statement: DROP ROLE Customer;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:13:27.227 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,5,"idle",2022-05-01 14:13:27 UTC,10/590,0,LOG,00000,"statement: CREATE SCHEMA Internal_schema;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:13:27.228 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,6,"idle",2022-05-01 14:13:27 UTC,10/591,0,LOG,00000,"statement: CREATE SCHEMA Public_info;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:13:27.229 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,7,"idle",2022-05-01 14:13:27 UTC,10/592,0,LOG,00000,"statement: CREATE ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:13:27.231 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,8,"idle",2022-05-01 14:13:27 UTC,10/593,0,LOG,00000,"statement: CREATE ROLE Customer WITH LOGIN;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:13:27.232 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,9,"idle",2022-05-01 14:13:27 UTC,10/594,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:13:27.233 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,10,"idle",2022-05-01 14:13:27 UTC,10/595,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:13:27.233 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,11,"idle",2022-05-01 14:13:27 UTC,10/596,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:13:27.235 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,12,"idle",2022-05-01 14:13:27 UTC,10/597,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT INSERT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:13:27.235 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,13,"idle",2022-05-01 14:13:27 UTC,10/598,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Customer;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:13:27.237 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,14,"idle",2022-05-01 14:13:27 UTC,10/599,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:13:27.238 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,15,"idle",2022-05-01 14:13:27 UTC,10/600,0,LOG,00000,"statement: CREATE TABLE Public_info.companies(
+	internal_ID VARCHAR ( 50 ) PRIMARY KEY,
+	company_name VARCHAR ( 50 ) UNIQUE NOT NULL,
+	annual_revenue MONEY NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:13:27.270 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,16,"idle",2022-05-01 14:13:27 UTC,10/601,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders(
+	staff_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Trader_name VARCHAR ( 50 ) NOT NULL,
+	date_joined date NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:13:27.281 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,17,"idle",2022-05-01 14:13:27 UTC,10/602,0,LOG,00000,"statement: CREATE TABLE Public_info.Portfolio(
+	Portfolio_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Portfolio_name VARCHAR ( 50 ) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:13:27.294 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,18,"idle",2022-05-01 14:13:27 UTC,10/603,0,LOG,00000,"statement: CREATE TABLE Public_info.prices(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	record_date date NOT NULL,
+	record_value MONEY NOT NULL) PARTITION BY RANGE (record_value);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:13:27.296 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,19,"idle",2022-05-01 14:13:27 UTC,10/604,0,LOG,00000,"statement: CREATE TABLE Internal_schema.positions(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	Portfolio_ID VARCHAR ( 50 ) references Public_info.Portfolio(Portfolio_ID),
+	current_stock NUMERIC (20,3) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:13:27.298 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,20,"idle",2022-05-01 14:13:27 UTC,10/605,0,LOG,00000,"statement: CREATE index ix_annual_revenue_btree on Public_info.companies using btree (annual_revenue);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:13:27.309 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,21,"idle",2022-05-01 14:13:27 UTC,10/606,0,LOG,00000,"statement: CREATE index ix_company_name_btree on Public_info.companies using btree (company_name);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:13:27.321 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,22,"idle",2022-05-01 14:13:27 UTC,10/607,0,LOG,00000,"statement: CREATE index ix_staff_id_hash on Internal_schema.traders using hash (staff_ID);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:13:27.324 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,23,"idle",2022-05-01 14:13:27 UTC,10/608,0,LOG,00000,"statement: CREATE index ix_date_joined_btree on Internal_schema.traders using btree (date_joined);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:13:27.336 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,24,"idle",2022-05-01 14:13:27 UTC,10/609,0,LOG,00000,"statement: CREATE index ix_Portfolio_ID on Public_info.Portfolio using hash (Portfolio_ID);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:13:27.337 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,25,"idle",2022-05-01 14:13:27 UTC,10/610,0,LOG,00000,"statement: CREATE index ix_record_value on Public_info.prices using btree (record_value);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:13:27.339 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,26,"idle",2022-05-01 14:13:27 UTC,10/611,0,LOG,00000,"statement: CREATE index ix_current_stock on Internal_schema.positions using btree (current_stock);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:13:27.352 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,27,"idle",2022-05-01 14:13:27 UTC,10/612,0,LOG,00000,"statement: CREATE TABLE Public_info.prices1 PARTITION OF Public_info.prices
+	FOR VALUES FROM ('2022-01-01') TO ('2022-04-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:13:27.353 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,28,"CREATE TABLE",2022-05-01 14:13:27 UTC,10/612,1247,ERROR,22P02,"invalid input syntax for type money: ""2022-01-01""",,,,,,"CREATE TABLE Public_info.prices1 PARTITION OF Public_info.prices
+	FOR VALUES FROM ('2022-01-01') TO ('2022-04-01');",84,,"psql","client backend",,0
+2022-05-01 14:13:27.356 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,29,"idle",2022-05-01 14:13:27 UTC,10/613,0,LOG,00000,"statement: CREATE TABLE Public_info.prices2 PARTITION OF Public_info.prices
+	FOR VALUES FROM ('2022-04-01') TO ('2022-07-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:13:27.357 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,30,"CREATE TABLE",2022-05-01 14:13:27 UTC,10/613,1248,ERROR,22P02,"invalid input syntax for type money: ""2022-04-01""",,,,,,"CREATE TABLE Public_info.prices2 PARTITION OF Public_info.prices
+	FOR VALUES FROM ('2022-04-01') TO ('2022-07-01');",84,,"psql","client backend",,0
+2022-05-01 14:13:27.361 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,31,"idle",2022-05-01 14:13:27 UTC,10/614,0,LOG,00000,"statement: CREATE TABLE Public_info.prices3 PARTITION OF Public_info.prices
+	FOR VALUES FROM ('2022-07-01') TO ('2022-10-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:13:27.361 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,32,"CREATE TABLE",2022-05-01 14:13:27 UTC,10/614,1249,ERROR,22P02,"invalid input syntax for type money: ""2022-07-01""",,,,,,"CREATE TABLE Public_info.prices3 PARTITION OF Public_info.prices
+	FOR VALUES FROM ('2022-07-01') TO ('2022-10-01');",84,,"psql","client backend",,0
+2022-05-01 14:13:27.363 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,33,"idle",2022-05-01 14:13:27 UTC,10/615,0,LOG,00000,"statement: CREATE TABLE Public_info.prices4 PARTITION OF Public_info.prices
+	FOR VALUES FROM ('2022-10-01') TO ('2023-01-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:13:27.363 UTC,"postgres","c18395341_stockbroker_db",4823,"[local]",626e9587.12d7,34,"CREATE TABLE",2022-05-01 14:13:27 UTC,10/615,1250,ERROR,22P02,"invalid input syntax for type money: ""2022-10-01""",,,,,,"CREATE TABLE Public_info.prices4 PARTITION OF Public_info.prices
+	FOR VALUES FROM ('2022-10-01') TO ('2023-01-01');",84,,"psql","client backend",,0
+2022-05-01 14:14:09.224 UTC,"postgres","c18395341_stockbroker_db",4830,"[local]",626e95b1.12de,1,"idle",2022-05-01 14:14:09 UTC,10/623,0,LOG,00000,"statement: DROP SCHEMA Internal_schema CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:14:09.234 UTC,"postgres","c18395341_stockbroker_db",4830,"[local]",626e95b1.12de,2,"idle",2022-05-01 14:14:09 UTC,10/624,0,LOG,00000,"statement: DROP SCHEMA Public_info CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:14:09.238 UTC,"postgres","c18395341_stockbroker_db",4830,"[local]",626e95b1.12de,3,"idle",2022-05-01 14:14:09 UTC,10/625,0,LOG,00000,"statement: DROP ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:14:09.239 UTC,"postgres","c18395341_stockbroker_db",4830,"[local]",626e95b1.12de,4,"idle",2022-05-01 14:14:09 UTC,10/626,0,LOG,00000,"statement: DROP ROLE Customer;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:14:09.240 UTC,"postgres","c18395341_stockbroker_db",4830,"[local]",626e95b1.12de,5,"idle",2022-05-01 14:14:09 UTC,10/627,0,LOG,00000,"statement: CREATE SCHEMA Internal_schema;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:14:09.241 UTC,"postgres","c18395341_stockbroker_db",4830,"[local]",626e95b1.12de,6,"idle",2022-05-01 14:14:09 UTC,10/628,0,LOG,00000,"statement: CREATE SCHEMA Public_info;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:14:09.242 UTC,"postgres","c18395341_stockbroker_db",4830,"[local]",626e95b1.12de,7,"idle",2022-05-01 14:14:09 UTC,10/629,0,LOG,00000,"statement: CREATE ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:14:09.243 UTC,"postgres","c18395341_stockbroker_db",4830,"[local]",626e95b1.12de,8,"idle",2022-05-01 14:14:09 UTC,10/630,0,LOG,00000,"statement: CREATE ROLE Customer WITH LOGIN;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:14:09.244 UTC,"postgres","c18395341_stockbroker_db",4830,"[local]",626e95b1.12de,9,"idle",2022-05-01 14:14:09 UTC,10/631,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:14:09.245 UTC,"postgres","c18395341_stockbroker_db",4830,"[local]",626e95b1.12de,10,"idle",2022-05-01 14:14:09 UTC,10/632,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:14:09.245 UTC,"postgres","c18395341_stockbroker_db",4830,"[local]",626e95b1.12de,11,"idle",2022-05-01 14:14:09 UTC,10/633,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:14:09.246 UTC,"postgres","c18395341_stockbroker_db",4830,"[local]",626e95b1.12de,12,"idle",2022-05-01 14:14:09 UTC,10/634,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT INSERT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:14:09.247 UTC,"postgres","c18395341_stockbroker_db",4830,"[local]",626e95b1.12de,13,"idle",2022-05-01 14:14:09 UTC,10/635,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Customer;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:14:09.248 UTC,"postgres","c18395341_stockbroker_db",4830,"[local]",626e95b1.12de,14,"idle",2022-05-01 14:14:09 UTC,10/636,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:14:09.249 UTC,"postgres","c18395341_stockbroker_db",4830,"[local]",626e95b1.12de,15,"idle",2022-05-01 14:14:09 UTC,10/637,0,LOG,00000,"statement: CREATE TABLE Public_info.companies(
+	internal_ID VARCHAR ( 50 ) PRIMARY KEY,
+	company_name VARCHAR ( 50 ) UNIQUE NOT NULL,
+	annual_revenue MONEY NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:14:09.280 UTC,"postgres","c18395341_stockbroker_db",4830,"[local]",626e95b1.12de,16,"idle",2022-05-01 14:14:09 UTC,10/638,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders(
+	staff_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Trader_name VARCHAR ( 50 ) NOT NULL,
+	date_joined date NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:14:09.293 UTC,"postgres","c18395341_stockbroker_db",4830,"[local]",626e95b1.12de,17,"idle",2022-05-01 14:14:09 UTC,10/639,0,LOG,00000,"statement: CREATE TABLE Public_info.Portfolio(
+	Portfolio_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Portfolio_name VARCHAR ( 50 ) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:14:09.304 UTC,"postgres","c18395341_stockbroker_db",4830,"[local]",626e95b1.12de,18,"idle",2022-05-01 14:14:09 UTC,10/640,0,LOG,00000,"statement: CREATE TABLE Public_info.prices(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	record_date date NOT NULL,
+	record_value MONEY NOT NULL) PARTITION BY RANGE (record_date);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:14:09.307 UTC,"postgres","c18395341_stockbroker_db",4830,"[local]",626e95b1.12de,19,"idle",2022-05-01 14:14:09 UTC,10/641,0,LOG,00000,"statement: CREATE TABLE Internal_schema.positions(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	Portfolio_ID VARCHAR ( 50 ) references Public_info.Portfolio(Portfolio_ID),
+	current_stock NUMERIC (20,3) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:14:09.309 UTC,"postgres","c18395341_stockbroker_db",4830,"[local]",626e95b1.12de,20,"idle",2022-05-01 14:14:09 UTC,10/642,0,LOG,00000,"statement: CREATE index ix_annual_revenue_btree on Public_info.companies using btree (annual_revenue);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:14:09.320 UTC,"postgres","c18395341_stockbroker_db",4830,"[local]",626e95b1.12de,21,"idle",2022-05-01 14:14:09 UTC,10/643,0,LOG,00000,"statement: CREATE index ix_company_name_btree on Public_info.companies using btree (company_name);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:14:09.332 UTC,"postgres","c18395341_stockbroker_db",4830,"[local]",626e95b1.12de,22,"idle",2022-05-01 14:14:09 UTC,10/644,0,LOG,00000,"statement: CREATE index ix_staff_id_hash on Internal_schema.traders using hash (staff_ID);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:14:09.335 UTC,"postgres","c18395341_stockbroker_db",4830,"[local]",626e95b1.12de,23,"idle",2022-05-01 14:14:09 UTC,10/645,0,LOG,00000,"statement: CREATE index ix_date_joined_btree on Internal_schema.traders using btree (date_joined);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:14:09.346 UTC,"postgres","c18395341_stockbroker_db",4830,"[local]",626e95b1.12de,24,"idle",2022-05-01 14:14:09 UTC,10/646,0,LOG,00000,"statement: CREATE index ix_Portfolio_ID on Public_info.Portfolio using hash (Portfolio_ID);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:14:09.348 UTC,"postgres","c18395341_stockbroker_db",4830,"[local]",626e95b1.12de,25,"idle",2022-05-01 14:14:09 UTC,10/647,0,LOG,00000,"statement: CREATE index ix_record_value on Public_info.prices using btree (record_value);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:14:09.349 UTC,"postgres","c18395341_stockbroker_db",4830,"[local]",626e95b1.12de,26,"idle",2022-05-01 14:14:09 UTC,10/648,0,LOG,00000,"statement: CREATE index ix_current_stock on Internal_schema.positions using btree (current_stock);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:14:09.364 UTC,"postgres","c18395341_stockbroker_db",4830,"[local]",626e95b1.12de,27,"idle",2022-05-01 14:14:09 UTC,10/649,0,LOG,00000,"statement: CREATE TABLE Public_info.prices1 PARTITION OF Public_info.prices
+	FOR VALUES FROM ('2022-01-01') TO ('2022-04-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:14:09.378 UTC,"postgres","c18395341_stockbroker_db",4830,"[local]",626e95b1.12de,28,"idle",2022-05-01 14:14:09 UTC,10/650,0,LOG,00000,"statement: CREATE TABLE Public_info.prices2 PARTITION OF Public_info.prices
+	FOR VALUES FROM ('2022-04-01') TO ('2022-07-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:14:09.389 UTC,"postgres","c18395341_stockbroker_db",4830,"[local]",626e95b1.12de,29,"idle",2022-05-01 14:14:09 UTC,10/651,0,LOG,00000,"statement: CREATE TABLE Public_info.prices3 PARTITION OF Public_info.prices
+	FOR VALUES FROM ('2022-07-01') TO ('2022-10-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:14:09.402 UTC,"postgres","c18395341_stockbroker_db",4830,"[local]",626e95b1.12de,30,"idle",2022-05-01 14:14:09 UTC,10/652,0,LOG,00000,"statement: CREATE TABLE Public_info.prices4 PARTITION OF Public_info.prices
+	FOR VALUES FROM ('2022-10-01') TO ('2023-01-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:16:16.442 UTC,"postgres","c18395341_stockbroker_db",4848,"[local]",626e9630.12f0,1,"idle",2022-05-01 14:16:16 UTC,10/668,0,LOG,00000,"statement: DROP SCHEMA Internal_schema CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:16:16.445 UTC,"postgres","c18395341_stockbroker_db",4848,"[local]",626e9630.12f0,2,"idle",2022-05-01 14:16:16 UTC,10/669,0,LOG,00000,"statement: DROP SCHEMA Public_info CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:16:16.448 UTC,"postgres","c18395341_stockbroker_db",4848,"[local]",626e9630.12f0,3,"idle",2022-05-01 14:16:16 UTC,10/670,0,LOG,00000,"statement: DROP ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:16:16.449 UTC,"postgres","c18395341_stockbroker_db",4848,"[local]",626e9630.12f0,4,"idle",2022-05-01 14:16:16 UTC,10/671,0,LOG,00000,"statement: DROP ROLE Customer;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:16:16.450 UTC,"postgres","c18395341_stockbroker_db",4848,"[local]",626e9630.12f0,5,"idle",2022-05-01 14:16:16 UTC,10/672,0,LOG,00000,"statement: CREATE SCHEMA Internal_schema;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:16:16.451 UTC,"postgres","c18395341_stockbroker_db",4848,"[local]",626e9630.12f0,6,"idle",2022-05-01 14:16:16 UTC,10/673,0,LOG,00000,"statement: CREATE SCHEMA Public_info;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:16:16.452 UTC,"postgres","c18395341_stockbroker_db",4848,"[local]",626e9630.12f0,7,"idle",2022-05-01 14:16:16 UTC,10/674,0,LOG,00000,"statement: CREATE ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:16:16.453 UTC,"postgres","c18395341_stockbroker_db",4848,"[local]",626e9630.12f0,8,"idle",2022-05-01 14:16:16 UTC,10/675,0,LOG,00000,"statement: CREATE ROLE Customer WITH LOGIN;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:16:16.454 UTC,"postgres","c18395341_stockbroker_db",4848,"[local]",626e9630.12f0,9,"idle",2022-05-01 14:16:16 UTC,10/676,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:16:16.455 UTC,"postgres","c18395341_stockbroker_db",4848,"[local]",626e9630.12f0,10,"idle",2022-05-01 14:16:16 UTC,10/677,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:16:16.455 UTC,"postgres","c18395341_stockbroker_db",4848,"[local]",626e9630.12f0,11,"idle",2022-05-01 14:16:16 UTC,10/678,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:16:16.456 UTC,"postgres","c18395341_stockbroker_db",4848,"[local]",626e9630.12f0,12,"idle",2022-05-01 14:16:16 UTC,10/679,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT INSERT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:16:16.457 UTC,"postgres","c18395341_stockbroker_db",4848,"[local]",626e9630.12f0,13,"idle",2022-05-01 14:16:16 UTC,10/680,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Customer;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:16:16.458 UTC,"postgres","c18395341_stockbroker_db",4848,"[local]",626e9630.12f0,14,"idle",2022-05-01 14:16:16 UTC,10/681,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:16:16.459 UTC,"postgres","c18395341_stockbroker_db",4848,"[local]",626e9630.12f0,15,"idle",2022-05-01 14:16:16 UTC,10/682,0,LOG,00000,"statement: CREATE TABLE Public_info.companies(
+	internal_ID VARCHAR ( 50 ) PRIMARY KEY,
+	company_name VARCHAR ( 50 ) UNIQUE NOT NULL,
+	annual_revenue MONEY NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:16:16.474 UTC,"postgres","c18395341_stockbroker_db",4848,"[local]",626e9630.12f0,16,"idle",2022-05-01 14:16:16 UTC,10/683,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders(
+	staff_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Trader_name VARCHAR ( 50 ) NOT NULL,
+	date_joined date NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:16:16.485 UTC,"postgres","c18395341_stockbroker_db",4848,"[local]",626e9630.12f0,17,"idle",2022-05-01 14:16:16 UTC,10/684,0,LOG,00000,"statement: CREATE TABLE Public_info.Portfolio(
+	Portfolio_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Portfolio_name VARCHAR ( 50 ) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:16:16.497 UTC,"postgres","c18395341_stockbroker_db",4848,"[local]",626e9630.12f0,18,"idle",2022-05-01 14:16:16 UTC,10/685,0,LOG,00000,"statement: CREATE TABLE Public_info.prices(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	record_date date NOT NULL,
+	record_value MONEY NOT NULL) PARTITION BY RANGE (record_date);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:16:16.499 UTC,"postgres","c18395341_stockbroker_db",4848,"[local]",626e9630.12f0,19,"idle",2022-05-01 14:16:16 UTC,10/686,0,LOG,00000,"statement: CREATE TABLE Internal_schema.positions(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	Portfolio_ID VARCHAR ( 50 ) references Public_info.Portfolio(Portfolio_ID),
+	current_stock NUMERIC (20,3) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:16:16.503 UTC,"postgres","c18395341_stockbroker_db",4848,"[local]",626e9630.12f0,20,"idle",2022-05-01 14:16:16 UTC,10/687,0,LOG,00000,"statement: CREATE index ix_annual_revenue_btree on Public_info.companies using btree (annual_revenue);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:16:16.515 UTC,"postgres","c18395341_stockbroker_db",4848,"[local]",626e9630.12f0,21,"idle",2022-05-01 14:16:16 UTC,10/688,0,LOG,00000,"statement: CREATE index ix_company_name_btree on Public_info.companies using btree (company_name);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:16:16.526 UTC,"postgres","c18395341_stockbroker_db",4848,"[local]",626e9630.12f0,22,"idle",2022-05-01 14:16:16 UTC,10/689,0,LOG,00000,"statement: CREATE index ix_staff_id_hash on Internal_schema.traders using hash (staff_ID);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:16:16.527 UTC,"postgres","c18395341_stockbroker_db",4848,"[local]",626e9630.12f0,23,"idle",2022-05-01 14:16:16 UTC,10/690,0,LOG,00000,"statement: CREATE index ix_date_joined_btree on Internal_schema.traders using btree (date_joined);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:16:16.541 UTC,"postgres","c18395341_stockbroker_db",4848,"[local]",626e9630.12f0,24,"idle",2022-05-01 14:16:16 UTC,10/691,0,LOG,00000,"statement: CREATE index ix_Portfolio_ID on Public_info.Portfolio using hash (Portfolio_ID);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:16:16.543 UTC,"postgres","c18395341_stockbroker_db",4848,"[local]",626e9630.12f0,25,"idle",2022-05-01 14:16:16 UTC,10/692,0,LOG,00000,"statement: CREATE index ix_record_value on Public_info.prices using btree (record_value);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:16:16.544 UTC,"postgres","c18395341_stockbroker_db",4848,"[local]",626e9630.12f0,26,"idle",2022-05-01 14:16:16 UTC,10/693,0,LOG,00000,"statement: CREATE index ix_current_stock on Internal_schema.positions using btree (current_stock);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:16:16.556 UTC,"postgres","c18395341_stockbroker_db",4848,"[local]",626e9630.12f0,27,"idle",2022-05-01 14:16:16 UTC,10/694,0,LOG,00000,"statement: CREATE TABLE Public_info.prices1 PARTITION OF Public_info.prices
+	FOR VALUES FROM ('2022-01-01') TO ('2022-04-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:16:16.567 UTC,"postgres","c18395341_stockbroker_db",4848,"[local]",626e9630.12f0,28,"idle",2022-05-01 14:16:16 UTC,10/695,0,LOG,00000,"statement: CREATE TABLE Public_info.prices2 PARTITION OF Public_info.prices
+	FOR VALUES FROM ('2022-04-01') TO ('2022-07-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:16:16.579 UTC,"postgres","c18395341_stockbroker_db",4848,"[local]",626e9630.12f0,29,"idle",2022-05-01 14:16:16 UTC,10/696,0,LOG,00000,"statement: CREATE TABLE Public_info.prices3 PARTITION OF Public_info.prices
+	FOR VALUES FROM ('2022-07-01') TO ('2022-10-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:16:16.592 UTC,"postgres","c18395341_stockbroker_db",4848,"[local]",626e9630.12f0,30,"idle",2022-05-01 14:16:16 UTC,10/697,0,LOG,00000,"statement: CREATE TABLE Public_info.prices4 PARTITION OF Public_info.prices
+	FOR VALUES FROM ('2022-10-01') TO ('2023-01-01');",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:23:09.268 UTC,"postgres","c18395341_stockbroker_db",4866,"[local]",626e9695.1302,1,"idle",2022-05-01 14:17:57 UTC,10/718,0,LOG,00000,"statement: INSERT INTO Public_info.prices (record_date, record_value) VALUES ('2022-04-21', 100);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:23:36.885 UTC,"postgres","c18395341_stockbroker_db",4866,"[local]",626e9695.1302,2,"idle",2022-05-01 14:17:57 UTC,10/719,0,LOG,00000,"statement: INSERT INTO Public_info.prices (record_date, record_value) VALUES ('2022-11-6', 150);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:23:59.732 UTC,"postgres","c18395341_stockbroker_db",4866,"[local]",626e9695.1302,3,"idle",2022-05-01 14:17:57 UTC,10/720,0,LOG,00000,"statement: INSERT INTO Public_info.prices (record_date, record_value) VALUES ('2022-01-20', 300);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:24:22.310 UTC,"postgres","c18395341_stockbroker_db",4866,"[local]",626e9695.1302,4,"idle",2022-05-01 14:17:57 UTC,10/721,0,LOG,00000,"statement: INSERT INTO Public_info.prices (record_date, record_value) VALUES ('2022-08-02', 350);",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:25:19.546 UTC,"postgres","c18395341_stockbroker_db",4866,"[local]",626e9695.1302,5,"idle",2022-05-01 14:17:57 UTC,10/722,0,LOG,00000,"statement: SELECT * FROM prices1;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:25:19.546 UTC,"postgres","c18395341_stockbroker_db",4866,"[local]",626e9695.1302,6,"SELECT",2022-05-01 14:17:57 UTC,10/722,0,ERROR,42P01,"relation ""prices1"" does not exist",,,,,,"SELECT * FROM prices1;",15,,"psql","client backend",,0
+2022-05-01 14:25:46.964 UTC,"postgres","c18395341_stockbroker_db",4866,"[local]",626e9695.1302,7,"idle",2022-05-01 14:17:57 UTC,10/723,0,LOG,00000,"statement: SELECT * FROM Public_info.prices1;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:27:05.234 UTC,"postgres","c18395341_stockbroker_db",4866,"[local]",626e9695.1302,8,"idle",2022-05-01 14:17:57 UTC,10/724,0,LOG,00000,"statement: SELECT * FROM Public_info.prices2;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:27:08.822 UTC,"postgres","c18395341_stockbroker_db",4866,"[local]",626e9695.1302,9,"idle",2022-05-01 14:17:57 UTC,10/725,0,LOG,00000,"statement: SELECT * FROM Public_info.prices3;",,,,,,,,,"psql","client backend",,0
+2022-05-01 14:27:11.881 UTC,"postgres","c18395341_stockbroker_db",4866,"[local]",626e9695.1302,10,"idle",2022-05-01 14:17:57 UTC,10/726,0,LOG,00000,"statement: SELECT * FROM Public_info.prices4;",,,,,,,,,"psql","client backend",,0
+2022-05-02 14:02:29.202 UTC,"postgres","c18395341_stockbroker_db",5905,"[local]",626fe475.1711,1,"idle",2022-05-02 14:02:29 UTC,11/150,0,LOG,00000,"statement: SELECT pg_catalog.set_config('search_path', '', false);",,,,,,,,,"pg_dump","client backend",,0

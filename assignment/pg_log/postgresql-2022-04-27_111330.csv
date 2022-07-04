@@ -1,0 +1,40 @@
+2022-04-27 11:13:30.619 UTC,,,1703,,6269255a.6a7,1,,2022-04-27 11:13:30 UTC,,0,LOG,00000,"ending log output to stderr",,"Future log output will go to log destination ""csvlog"".",,,,,,,"","postmaster",,0
+2022-04-27 11:13:30.619 UTC,,,1703,,6269255a.6a7,2,,2022-04-27 11:13:30 UTC,,0,LOG,00000,"starting PostgreSQL 14.1 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit",,,,,,,,,"","postmaster",,0
+2022-04-27 11:13:30.620 UTC,,,1703,,6269255a.6a7,3,,2022-04-27 11:13:30 UTC,,0,LOG,00000,"listening on IPv4 address ""127.0.0.1"", port 5432",,,,,,,,,"","postmaster",,0
+2022-04-27 11:13:30.630 UTC,,,1703,,6269255a.6a7,4,,2022-04-27 11:13:30 UTC,,0,LOG,00000,"listening on Unix socket ""/tmp/.s.PGSQL.5432""",,,,,,,,,"","postmaster",,0
+2022-04-27 11:13:30.656 UTC,,,1708,,6269255a.6ac,1,,2022-04-27 11:13:30 UTC,,0,LOG,00000,"database system was shut down at 2022-04-27 11:12:08 UTC",,,,,,,,,"","startup",,0
+2022-04-27 11:13:30.681 UTC,,,1703,,6269255a.6a7,5,,2022-04-27 11:13:30 UTC,,0,LOG,00000,"database system is ready to accept connections",,,,,,,,,"","postmaster",,0
+2022-04-27 11:13:44.390 UTC,"postgres","c18395341_stockbroker_db",1717,"[local]",62692568.6b5,1,"idle",2022-04-27 11:13:44 UTC,3/2,0,LOG,00000,"statement: DROP SCHEMA Internal_schema CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-04-27 11:13:44.405 UTC,"postgres","c18395341_stockbroker_db",1717,"[local]",62692568.6b5,2,"idle",2022-04-27 11:13:44 UTC,3/3,0,LOG,00000,"statement: DROP SCHEMA Public_info CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-04-27 11:13:44.408 UTC,"postgres","c18395341_stockbroker_db",1717,"[local]",62692568.6b5,3,"idle",2022-04-27 11:13:44 UTC,3/4,0,LOG,00000,"statement: DROP ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-04-27 11:13:44.413 UTC,"postgres","c18395341_stockbroker_db",1717,"[local]",62692568.6b5,4,"idle",2022-04-27 11:13:44 UTC,3/5,0,LOG,00000,"statement: DROP ROLE Customer;",,,,,,,,,"psql","client backend",,0
+2022-04-27 11:13:44.414 UTC,"postgres","c18395341_stockbroker_db",1717,"[local]",62692568.6b5,5,"idle",2022-04-27 11:13:44 UTC,3/6,0,LOG,00000,"statement: CREATE SCHEMA Internal_schema;",,,,,,,,,"psql","client backend",,0
+2022-04-27 11:13:44.417 UTC,"postgres","c18395341_stockbroker_db",1717,"[local]",62692568.6b5,6,"idle",2022-04-27 11:13:44 UTC,3/7,0,LOG,00000,"statement: CREATE SCHEMA Public_info;",,,,,,,,,"psql","client backend",,0
+2022-04-27 11:13:44.418 UTC,"postgres","c18395341_stockbroker_db",1717,"[local]",62692568.6b5,7,"idle",2022-04-27 11:13:44 UTC,3/8,0,LOG,00000,"statement: CREATE ROLE Trader WITH LOGIN ENCRYPTED PASSWORD 'password';",,,,,,,,,"psql","client backend",,0
+2022-04-27 11:13:44.428 UTC,"postgres","c18395341_stockbroker_db",1717,"[local]",62692568.6b5,8,"idle",2022-04-27 11:13:44 UTC,3/9,0,LOG,00000,"statement: CREATE ROLE Customer WITH LOGIN;",,,,,,,,,"psql","client backend",,0
+2022-04-27 11:13:44.429 UTC,"postgres","c18395341_stockbroker_db",1717,"[local]",62692568.6b5,9,"idle",2022-04-27 11:13:44 UTC,3/10,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-04-27 11:13:44.430 UTC,"postgres","c18395341_stockbroker_db",1717,"[local]",62692568.6b5,10,"idle",2022-04-27 11:13:44 UTC,3/11,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-04-27 11:13:44.430 UTC,"postgres","c18395341_stockbroker_db",1717,"[local]",62692568.6b5,11,"idle",2022-04-27 11:13:44 UTC,3/12,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-04-27 11:13:44.434 UTC,"postgres","c18395341_stockbroker_db",1717,"[local]",62692568.6b5,12,"idle",2022-04-27 11:13:44 UTC,3/13,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-04-27 11:13:44.435 UTC,"postgres","c18395341_stockbroker_db",1717,"[local]",62692568.6b5,13,"idle",2022-04-27 11:13:44 UTC,3/14,0,LOG,00000,"statement: CREATE TABLE Public_info.companies(
+	internal_ID VARCHAR ( 50 ) PRIMARY KEY,
+	company_name VARCHAR ( 50 ) UNIQUE NOT NULL,
+	annual_revenue MONEY NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-04-27 11:13:44.477 UTC,"postgres","c18395341_stockbroker_db",1717,"[local]",62692568.6b5,14,"idle",2022-04-27 11:13:44 UTC,3/15,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders(
+	staff_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Trader_name VARCHAR ( 50 ) NOT NULL,
+	date_joined DATE NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-04-27 11:13:44.493 UTC,"postgres","c18395341_stockbroker_db",1717,"[local]",62692568.6b5,15,"idle",2022-04-27 11:13:44 UTC,3/16,0,LOG,00000,"statement: CREATE TABLE Public_info.Portfolio(
+	Portfolio_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Portfolio_name VARCHAR ( 50 ) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-04-27 11:13:44.506 UTC,"postgres","c18395341_stockbroker_db",1717,"[local]",62692568.6b5,16,"idle",2022-04-27 11:13:44 UTC,3/17,0,LOG,00000,"statement: CREATE TABLE Public_info.prices(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	record_date DATE NOT NULL,
+	record_value MONEY NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-04-27 11:13:44.529 UTC,"postgres","c18395341_stockbroker_db",1717,"[local]",62692568.6b5,17,"idle",2022-04-27 11:13:44 UTC,3/18,0,LOG,00000,"statement: CREATE TABLE Internal_schema.positions(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	Portfolio_ID VARCHAR ( 50 ) references Public_info.Portfolio(Portfolio_ID),
+	current_stock NUMERIC (20,3) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-04-27 11:14:18.941 UTC,"postgres","c18395341_stockbroker_db",1719,"[local]",6269256f.6b7,1,"idle",2022-04-27 11:13:51 UTC,3/20,0,LOG,00000,"statement: SELECT pg_reload_conf();",,,,,,,,,"psql","client backend",,0
+2022-04-27 11:14:18.948 UTC,,,1703,,6269255a.6a7,6,,2022-04-27 11:13:30 UTC,,0,LOG,00000,"received SIGHUP, reloading configuration files",,,,,,,,,"","postmaster",,0
+2022-04-30 10:54:19.831 UTC,"postgres","c18395341_stockbroker_db",3040,"[local]",626d155b.be0,1,"idle",2022-04-30 10:54:19 UTC,4/140,0,LOG,00000,"statement: DROP SCHEMA Internal_schema CASCADE;",,,,,,,,,"psql","client backend",,0

@@ -1,0 +1,9 @@
+2022-04-14 11:06:23.793 UTC [1718] LOG:  starting PostgreSQL 14.1 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+2022-04-14 11:06:23.794 UTC [1718] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2022-04-14 11:06:23.805 UTC [1718] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2022-04-14 11:06:23.828 UTC [1721] LOG:  database system was shut down at 2022-04-14 11:04:29 UTC
+2022-04-14 11:06:23.839 UTC [1718] LOG:  database system is ready to accept connections
+2022-04-14 11:18:30.229 UTC [1718] LOG:  received smart shutdown request
+2022-04-14 11:18:30.231 UTC [1718] LOG:  background worker "logical replication launcher" (PID 1727) exited with exit code 1
+2022-04-14 11:18:30.232 UTC [1722] LOG:  shutting down
+2022-04-14 11:18:30.269 UTC [1718] LOG:  database system is shut down

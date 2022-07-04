@@ -1,0 +1,664 @@
+2022-04-30 10:54:19.841 UTC,"postgres","c18395341_stockbroker_db",3040,"[local]",626d155b.be0,2,"idle",2022-04-30 10:54:19 UTC,4/141,0,LOG,00000,"statement: DROP SCHEMA Public_info CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:54:19.848 UTC,"postgres","c18395341_stockbroker_db",3040,"[local]",626d155b.be0,3,"idle",2022-04-30 10:54:19 UTC,4/142,0,LOG,00000,"statement: DROP ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:54:19.851 UTC,"postgres","c18395341_stockbroker_db",3040,"[local]",626d155b.be0,4,"idle",2022-04-30 10:54:19 UTC,4/143,0,LOG,00000,"statement: DROP ROLE Customer;",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:54:19.854 UTC,"postgres","c18395341_stockbroker_db",3040,"[local]",626d155b.be0,5,"idle",2022-04-30 10:54:19 UTC,4/144,0,LOG,00000,"statement: CREATE SCHEMA Internal_schema;",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:54:19.855 UTC,"postgres","c18395341_stockbroker_db",3040,"[local]",626d155b.be0,6,"idle",2022-04-30 10:54:19 UTC,4/145,0,LOG,00000,"statement: CREATE SCHEMA Public_info;",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:54:19.857 UTC,"postgres","c18395341_stockbroker_db",3040,"[local]",626d155b.be0,7,"idle",2022-04-30 10:54:19 UTC,4/146,0,LOG,00000,"statement: CREATE ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:54:19.859 UTC,"postgres","c18395341_stockbroker_db",3040,"[local]",626d155b.be0,8,"idle",2022-04-30 10:54:19 UTC,4/147,0,LOG,00000,"statement: CREATE ROLE Customer WITH LOGIN;",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:54:19.861 UTC,"postgres","c18395341_stockbroker_db",3040,"[local]",626d155b.be0,9,"idle",2022-04-30 10:54:19 UTC,4/148,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:54:19.862 UTC,"postgres","c18395341_stockbroker_db",3040,"[local]",626d155b.be0,10,"idle",2022-04-30 10:54:19 UTC,4/149,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:54:19.863 UTC,"postgres","c18395341_stockbroker_db",3040,"[local]",626d155b.be0,11,"idle",2022-04-30 10:54:19 UTC,4/150,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:54:19.866 UTC,"postgres","c18395341_stockbroker_db",3040,"[local]",626d155b.be0,12,"idle",2022-04-30 10:54:19 UTC,4/151,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT INSERT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:54:19.867 UTC,"postgres","c18395341_stockbroker_db",3040,"[local]",626d155b.be0,13,"idle",2022-04-30 10:54:19 UTC,4/152,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Cutomer;",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:54:19.868 UTC,"postgres","c18395341_stockbroker_db",3040,"[local]",626d155b.be0,14,"ALTER DEFAULT PRIVILEGES",2022-04-30 10:54:19 UTC,4/152,0,ERROR,42704,"role ""cutomer"" does not exist",,,,,,"ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Cutomer;",,,"psql","client backend",,0
+2022-04-30 10:54:19.869 UTC,"postgres","c18395341_stockbroker_db",3040,"[local]",626d155b.be0,15,"idle",2022-04-30 10:54:19 UTC,4/153,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:54:19.871 UTC,"postgres","c18395341_stockbroker_db",3040,"[local]",626d155b.be0,16,"idle",2022-04-30 10:54:19 UTC,4/154,0,LOG,00000,"statement: CREATE TABLE Public_info.companies(
+	internal_ID VARCHAR ( 50 ) PRIMARY KEY,
+	company_name VARCHAR ( 50 ) UNIQUE NOT NULL,
+	annual_revenue MONEY NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:54:19.942 UTC,"postgres","c18395341_stockbroker_db",3040,"[local]",626d155b.be0,17,"idle",2022-04-30 10:54:19 UTC,4/155,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders(
+	staff_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Trader_name VARCHAR ( 50 ) NOT NULL,
+	date_joined DATE NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:54:19.961 UTC,"postgres","c18395341_stockbroker_db",3040,"[local]",626d155b.be0,18,"idle",2022-04-30 10:54:19 UTC,4/156,0,LOG,00000,"statement: CREATE TABLE Public_info.Portfolio(
+	Portfolio_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Portfolio_name VARCHAR ( 50 ) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:54:19.977 UTC,"postgres","c18395341_stockbroker_db",3040,"[local]",626d155b.be0,19,"idle",2022-04-30 10:54:19 UTC,4/157,0,LOG,00000,"statement: CREATE TABLE Public_info.prices(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	record_date DATE NOT NULL,
+	record_value MONEY NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:54:19.985 UTC,"postgres","c18395341_stockbroker_db",3040,"[local]",626d155b.be0,20,"idle",2022-04-30 10:54:19 UTC,4/158,0,LOG,00000,"statement: CREATE TABLE Internal_schema.positions(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	Portfolio_ID VARCHAR ( 50 ) references Public_info.Portfolio(Portfolio_ID),
+	current_stock NUMERIC (20,3) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:55:04.086 UTC,"postgres","c18395341_stockbroker_db",3051,"[local]",626d1588.beb,1,"idle",2022-04-30 10:55:04 UTC,4/170,0,LOG,00000,"statement: DROP SCHEMA Internal_schema CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:55:04.093 UTC,"postgres","c18395341_stockbroker_db",3051,"[local]",626d1588.beb,2,"idle",2022-04-30 10:55:04 UTC,4/171,0,LOG,00000,"statement: DROP SCHEMA Public_info CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:55:04.100 UTC,"postgres","c18395341_stockbroker_db",3051,"[local]",626d1588.beb,3,"idle",2022-04-30 10:55:04 UTC,4/172,0,LOG,00000,"statement: DROP ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:55:04.103 UTC,"postgres","c18395341_stockbroker_db",3051,"[local]",626d1588.beb,4,"idle",2022-04-30 10:55:04 UTC,4/173,0,LOG,00000,"statement: DROP ROLE Customer;",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:55:04.104 UTC,"postgres","c18395341_stockbroker_db",3051,"[local]",626d1588.beb,5,"idle",2022-04-30 10:55:04 UTC,4/174,0,LOG,00000,"statement: CREATE SCHEMA Internal_schema;",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:55:04.106 UTC,"postgres","c18395341_stockbroker_db",3051,"[local]",626d1588.beb,6,"idle",2022-04-30 10:55:04 UTC,4/175,0,LOG,00000,"statement: CREATE SCHEMA Public_info;",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:55:04.108 UTC,"postgres","c18395341_stockbroker_db",3051,"[local]",626d1588.beb,7,"idle",2022-04-30 10:55:04 UTC,4/176,0,LOG,00000,"statement: CREATE ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:55:04.110 UTC,"postgres","c18395341_stockbroker_db",3051,"[local]",626d1588.beb,8,"idle",2022-04-30 10:55:04 UTC,4/177,0,LOG,00000,"statement: CREATE ROLE Customer WITH LOGIN;",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:55:04.112 UTC,"postgres","c18395341_stockbroker_db",3051,"[local]",626d1588.beb,9,"idle",2022-04-30 10:55:04 UTC,4/178,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:55:04.113 UTC,"postgres","c18395341_stockbroker_db",3051,"[local]",626d1588.beb,10,"idle",2022-04-30 10:55:04 UTC,4/179,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:55:04.114 UTC,"postgres","c18395341_stockbroker_db",3051,"[local]",626d1588.beb,11,"idle",2022-04-30 10:55:04 UTC,4/180,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:55:04.116 UTC,"postgres","c18395341_stockbroker_db",3051,"[local]",626d1588.beb,12,"idle",2022-04-30 10:55:04 UTC,4/181,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT INSERT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:55:04.118 UTC,"postgres","c18395341_stockbroker_db",3051,"[local]",626d1588.beb,13,"idle",2022-04-30 10:55:04 UTC,4/182,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Customer;",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:55:04.120 UTC,"postgres","c18395341_stockbroker_db",3051,"[local]",626d1588.beb,14,"idle",2022-04-30 10:55:04 UTC,4/183,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:55:04.121 UTC,"postgres","c18395341_stockbroker_db",3051,"[local]",626d1588.beb,15,"idle",2022-04-30 10:55:04 UTC,4/184,0,LOG,00000,"statement: CREATE TABLE Public_info.companies(
+	internal_ID VARCHAR ( 50 ) PRIMARY KEY,
+	company_name VARCHAR ( 50 ) UNIQUE NOT NULL,
+	annual_revenue MONEY NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:55:04.149 UTC,"postgres","c18395341_stockbroker_db",3051,"[local]",626d1588.beb,16,"idle",2022-04-30 10:55:04 UTC,4/185,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders(
+	staff_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Trader_name VARCHAR ( 50 ) NOT NULL,
+	date_joined DATE NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:55:04.161 UTC,"postgres","c18395341_stockbroker_db",3051,"[local]",626d1588.beb,17,"idle",2022-04-30 10:55:04 UTC,4/186,0,LOG,00000,"statement: CREATE TABLE Public_info.Portfolio(
+	Portfolio_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Portfolio_name VARCHAR ( 50 ) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:55:04.175 UTC,"postgres","c18395341_stockbroker_db",3051,"[local]",626d1588.beb,18,"idle",2022-04-30 10:55:04 UTC,4/187,0,LOG,00000,"statement: CREATE TABLE Public_info.prices(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	record_date DATE NOT NULL,
+	record_value MONEY NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:55:04.178 UTC,"postgres","c18395341_stockbroker_db",3051,"[local]",626d1588.beb,19,"idle",2022-04-30 10:55:04 UTC,4/188,0,LOG,00000,"statement: CREATE TABLE Internal_schema.positions(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	Portfolio_ID VARCHAR ( 50 ) references Public_info.Portfolio(Portfolio_ID),
+	current_stock NUMERIC (20,3) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:55:28.829 UTC,"postgres","c18395341_stockbroker_db",3054,"[local]",626d1592.bee,1,"idle",2022-04-30 10:55:14 UTC,4/190,0,LOG,00000,"statement: SELECT pg_catalog.pg_get_userbyid(d.defaclrole) AS ""Owner"",
+  n.nspname AS ""Schema"",
+  CASE d.defaclobjtype WHEN 'r' THEN 'table' WHEN 'S' THEN 'sequence' WHEN 'f' THEN 'function' WHEN 'T' THEN 'type' WHEN 'n' THEN 'schema' END AS ""Type"",
+  pg_catalog.array_to_string(d.defaclacl, E'\n') AS ""Access privileges""
+FROM pg_catalog.pg_default_acl d
+     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = d.defaclnamespace
+ORDER BY 1, 2, 3;",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:56:15.132 UTC,"postgres","c18395341_stockbroker_db",3054,"[local]",626d1592.bee,2,"idle",2022-04-30 10:55:14 UTC,4/191,0,LOG,00000,"statement: SELECT n.nspname AS ""Name"",
+  pg_catalog.pg_get_userbyid(n.nspowner) AS ""Owner""
+FROM pg_catalog.pg_namespace n
+WHERE n.nspname !~ '^pg_' AND n.nspname <> 'information_schema'
+ORDER BY 1;",,,,,,,,,"psql","client backend",,0
+2022-04-30 10:56:20.420 UTC,"postgres","c18395341_stockbroker_db",3054,"[local]",626d1592.bee,3,"idle",2022-04-30 10:55:14 UTC,4/192,0,LOG,00000,"statement: SELECT n.nspname AS ""Name"",
+  pg_catalog.pg_get_userbyid(n.nspowner) AS ""Owner"",
+  pg_catalog.array_to_string(n.nspacl, E'\n') AS ""Access privileges"",
+  pg_catalog.obj_description(n.oid, 'pg_namespace') AS ""Description""
+FROM pg_catalog.pg_namespace n
+WHERE n.nspname !~ '^pg_' AND n.nspname <> 'information_schema'
+ORDER BY 1;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:09.046 UTC,"postgres","c18395341_stockbroker_db",3461,"[local]",626d22e9.d85,1,"idle",2022-04-30 11:52:09 UTC,5/232,0,LOG,00000,"statement: DROP SCHEMA Internal_schema CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:09.054 UTC,"postgres","c18395341_stockbroker_db",3461,"[local]",626d22e9.d85,2,"idle",2022-04-30 11:52:09 UTC,5/233,0,LOG,00000,"statement: DROP SCHEMA Public_info CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:09.062 UTC,"postgres","c18395341_stockbroker_db",3461,"[local]",626d22e9.d85,3,"idle",2022-04-30 11:52:09 UTC,5/234,0,LOG,00000,"statement: DROP ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:09.064 UTC,"postgres","c18395341_stockbroker_db",3461,"[local]",626d22e9.d85,4,"idle",2022-04-30 11:52:09 UTC,5/235,0,LOG,00000,"statement: DROP ROLE Customer;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:09.066 UTC,"postgres","c18395341_stockbroker_db",3461,"[local]",626d22e9.d85,5,"idle",2022-04-30 11:52:09 UTC,5/236,0,LOG,00000,"statement: CREATE SCHEMA Internal_schema;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:09.068 UTC,"postgres","c18395341_stockbroker_db",3461,"[local]",626d22e9.d85,6,"idle",2022-04-30 11:52:09 UTC,5/237,0,LOG,00000,"statement: CREATE SCHEMA Public_info;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:09.070 UTC,"postgres","c18395341_stockbroker_db",3461,"[local]",626d22e9.d85,7,"idle",2022-04-30 11:52:09 UTC,5/238,0,LOG,00000,"statement: CREATE ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:09.071 UTC,"postgres","c18395341_stockbroker_db",3461,"[local]",626d22e9.d85,8,"idle",2022-04-30 11:52:09 UTC,5/239,0,LOG,00000,"statement: CREATE ROLE Customer WITH LOGIN;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:09.073 UTC,"postgres","c18395341_stockbroker_db",3461,"[local]",626d22e9.d85,9,"idle",2022-04-30 11:52:09 UTC,5/240,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:09.075 UTC,"postgres","c18395341_stockbroker_db",3461,"[local]",626d22e9.d85,10,"idle",2022-04-30 11:52:09 UTC,5/241,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:09.076 UTC,"postgres","c18395341_stockbroker_db",3461,"[local]",626d22e9.d85,11,"idle",2022-04-30 11:52:09 UTC,5/242,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:09.078 UTC,"postgres","c18395341_stockbroker_db",3461,"[local]",626d22e9.d85,12,"idle",2022-04-30 11:52:09 UTC,5/243,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT INSERT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:09.079 UTC,"postgres","c18395341_stockbroker_db",3461,"[local]",626d22e9.d85,13,"idle",2022-04-30 11:52:09 UTC,5/244,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Customer;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:09.081 UTC,"postgres","c18395341_stockbroker_db",3461,"[local]",626d22e9.d85,14,"idle",2022-04-30 11:52:09 UTC,5/245,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:09.082 UTC,"postgres","c18395341_stockbroker_db",3461,"[local]",626d22e9.d85,15,"idle",2022-04-30 11:52:09 UTC,5/246,0,LOG,00000,"statement: CREATE TABLE Public_info.companies(
+	internal_ID VARCHAR ( 50 ) PRIMARY KEY,
+	company_name VARCHAR ( 50 ) UNIQUE NOT NULL,
+	annual_revenue MONEY NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:09.108 UTC,"postgres","c18395341_stockbroker_db",3461,"[local]",626d22e9.d85,16,"idle",2022-04-30 11:52:09 UTC,5/247,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders(
+	staff_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Trader_name VARCHAR ( 50 ) NOT NULL,
+	date_joined DATE NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:09.154 UTC,"postgres","c18395341_stockbroker_db",3461,"[local]",626d22e9.d85,17,"idle",2022-04-30 11:52:09 UTC,5/248,0,LOG,00000,"statement: CREATE TABLE Public_info.Portfolio(
+	Portfolio_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Portfolio_name VARCHAR ( 50 ) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:09.171 UTC,"postgres","c18395341_stockbroker_db",3461,"[local]",626d22e9.d85,18,"idle",2022-04-30 11:52:09 UTC,5/249,0,LOG,00000,"statement: CREATE TABLE Public_info.prices(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	record_date DATE NOT NULL,
+	record_value MONEY NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:09.177 UTC,"postgres","c18395341_stockbroker_db",3461,"[local]",626d22e9.d85,19,"idle",2022-04-30 11:52:09 UTC,5/250,0,LOG,00000,"statement: CREATE TABLE Internal_schema.positions(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	Portfolio_ID VARCHAR ( 50 ) references Public_info.Portfolio(Portfolio_ID),
+	current_stock NUMERIC (20,3) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:09.183 UTC,"postgres","c18395341_stockbroker_db",3461,"[local]",626d22e9.d85,20,"idle",2022-04-30 11:52:09 UTC,5/251,0,LOG,00000,"statement: CREATE index ix_annual_revenue_btree on Public_info.companies using btree (annual_revenue);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:09.199 UTC,"postgres","c18395341_stockbroker_db",3461,"[local]",626d22e9.d85,21,"idle",2022-04-30 11:52:09 UTC,5/252,0,LOG,00000,"statement: CREATE index ix_company_name_btree on Public_info.commpanies using btree (company_name);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:09.200 UTC,"postgres","c18395341_stockbroker_db",3461,"[local]",626d22e9.d85,22,"CREATE INDEX",2022-04-30 11:52:09 UTC,5/252,0,ERROR,42P01,"relation ""public_info.commpanies"" does not exist",,,,,,"CREATE index ix_company_name_btree on Public_info.commpanies using btree (company_name);",,,"psql","client backend",,0
+2022-04-30 11:52:09.201 UTC,"postgres","c18395341_stockbroker_db",3461,"[local]",626d22e9.d85,23,"idle",2022-04-30 11:52:09 UTC,5/253,0,LOG,00000,"statement: CREATE index ix_staff_id_hash on Internal_schema.traders using hash (staff_ID);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:09.206 UTC,"postgres","c18395341_stockbroker_db",3461,"[local]",626d22e9.d85,24,"idle",2022-04-30 11:52:09 UTC,5/254,0,LOG,00000,"statement: CREATE index ix_date_joined_btree on Internal_schema.traders using btree (date_joined);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:09.222 UTC,"postgres","c18395341_stockbroker_db",3461,"[local]",626d22e9.d85,25,"idle",2022-04-30 11:52:09 UTC,5/255,0,LOG,00000,"statement: CREATE index ix_Portfolio_ID on Public_info.Portfolio using hash (Portfolio_ID);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:09.228 UTC,"postgres","c18395341_stockbroker_db",3461,"[local]",626d22e9.d85,26,"idle",2022-04-30 11:52:09 UTC,5/256,0,LOG,00000,"statement: CREATE index ix_record_value on Public_info.prices using btree (record_value);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:09.243 UTC,"postgres","c18395341_stockbroker_db",3461,"[local]",626d22e9.d85,27,"idle",2022-04-30 11:52:09 UTC,5/257,0,LOG,00000,"statement: CREATE index ix_current_stock on Internal_schema.positions using btree (current_stock);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:46.376 UTC,"postgres","c18395341_stockbroker_db",3467,"[local]",626d230e.d8b,1,"idle",2022-04-30 11:52:46 UTC,5/267,0,LOG,00000,"statement: DROP SCHEMA Internal_schema CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:46.382 UTC,"postgres","c18395341_stockbroker_db",3467,"[local]",626d230e.d8b,2,"idle",2022-04-30 11:52:46 UTC,5/268,0,LOG,00000,"statement: DROP SCHEMA Public_info CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:46.390 UTC,"postgres","c18395341_stockbroker_db",3467,"[local]",626d230e.d8b,3,"idle",2022-04-30 11:52:46 UTC,5/269,0,LOG,00000,"statement: DROP ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:46.393 UTC,"postgres","c18395341_stockbroker_db",3467,"[local]",626d230e.d8b,4,"idle",2022-04-30 11:52:46 UTC,5/270,0,LOG,00000,"statement: DROP ROLE Customer;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:46.396 UTC,"postgres","c18395341_stockbroker_db",3467,"[local]",626d230e.d8b,5,"idle",2022-04-30 11:52:46 UTC,5/271,0,LOG,00000,"statement: CREATE SCHEMA Internal_schema;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:46.399 UTC,"postgres","c18395341_stockbroker_db",3467,"[local]",626d230e.d8b,6,"idle",2022-04-30 11:52:46 UTC,5/272,0,LOG,00000,"statement: CREATE SCHEMA Public_info;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:46.402 UTC,"postgres","c18395341_stockbroker_db",3467,"[local]",626d230e.d8b,7,"idle",2022-04-30 11:52:46 UTC,5/273,0,LOG,00000,"statement: CREATE ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:46.404 UTC,"postgres","c18395341_stockbroker_db",3467,"[local]",626d230e.d8b,8,"idle",2022-04-30 11:52:46 UTC,5/274,0,LOG,00000,"statement: CREATE ROLE Customer WITH LOGIN;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:46.405 UTC,"postgres","c18395341_stockbroker_db",3467,"[local]",626d230e.d8b,9,"idle",2022-04-30 11:52:46 UTC,5/275,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:46.407 UTC,"postgres","c18395341_stockbroker_db",3467,"[local]",626d230e.d8b,10,"idle",2022-04-30 11:52:46 UTC,5/276,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:46.408 UTC,"postgres","c18395341_stockbroker_db",3467,"[local]",626d230e.d8b,11,"idle",2022-04-30 11:52:46 UTC,5/277,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:46.410 UTC,"postgres","c18395341_stockbroker_db",3467,"[local]",626d230e.d8b,12,"idle",2022-04-30 11:52:46 UTC,5/278,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT INSERT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:46.412 UTC,"postgres","c18395341_stockbroker_db",3467,"[local]",626d230e.d8b,13,"idle",2022-04-30 11:52:46 UTC,5/279,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Customer;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:46.413 UTC,"postgres","c18395341_stockbroker_db",3467,"[local]",626d230e.d8b,14,"idle",2022-04-30 11:52:46 UTC,5/280,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:46.415 UTC,"postgres","c18395341_stockbroker_db",3467,"[local]",626d230e.d8b,15,"idle",2022-04-30 11:52:46 UTC,5/281,0,LOG,00000,"statement: CREATE TABLE Public_info.companies(
+	internal_ID VARCHAR ( 50 ) PRIMARY KEY,
+	company_name VARCHAR ( 50 ) UNIQUE NOT NULL,
+	annual_revenue MONEY NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:46.441 UTC,"postgres","c18395341_stockbroker_db",3467,"[local]",626d230e.d8b,16,"idle",2022-04-30 11:52:46 UTC,5/282,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders(
+	staff_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Trader_name VARCHAR ( 50 ) NOT NULL,
+	date_joined DATE NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:46.455 UTC,"postgres","c18395341_stockbroker_db",3467,"[local]",626d230e.d8b,17,"idle",2022-04-30 11:52:46 UTC,5/283,0,LOG,00000,"statement: CREATE TABLE Public_info.Portfolio(
+	Portfolio_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Portfolio_name VARCHAR ( 50 ) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:46.467 UTC,"postgres","c18395341_stockbroker_db",3467,"[local]",626d230e.d8b,18,"idle",2022-04-30 11:52:46 UTC,5/284,0,LOG,00000,"statement: CREATE TABLE Public_info.prices(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	record_date DATE NOT NULL,
+	record_value MONEY NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:46.504 UTC,"postgres","c18395341_stockbroker_db",3467,"[local]",626d230e.d8b,19,"idle",2022-04-30 11:52:46 UTC,5/285,0,LOG,00000,"statement: CREATE TABLE Internal_schema.positions(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	Portfolio_ID VARCHAR ( 50 ) references Public_info.Portfolio(Portfolio_ID),
+	current_stock NUMERIC (20,3) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:46.507 UTC,"postgres","c18395341_stockbroker_db",3467,"[local]",626d230e.d8b,20,"idle",2022-04-30 11:52:46 UTC,5/286,0,LOG,00000,"statement: CREATE index ix_annual_revenue_btree on Public_info.companies using btree (annual_revenue);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:46.521 UTC,"postgres","c18395341_stockbroker_db",3467,"[local]",626d230e.d8b,21,"idle",2022-04-30 11:52:46 UTC,5/287,0,LOG,00000,"statement: CREATE index ix_company_name_btree on Public_info.commpanies using btree (company_name);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:46.522 UTC,"postgres","c18395341_stockbroker_db",3467,"[local]",626d230e.d8b,22,"CREATE INDEX",2022-04-30 11:52:46 UTC,5/287,0,ERROR,42P01,"relation ""public_info.commpanies"" does not exist",,,,,,"CREATE index ix_company_name_btree on Public_info.commpanies using btree (company_name);",,,"psql","client backend",,0
+2022-04-30 11:52:46.523 UTC,"postgres","c18395341_stockbroker_db",3467,"[local]",626d230e.d8b,23,"idle",2022-04-30 11:52:46 UTC,5/288,0,LOG,00000,"statement: CREATE index ix_staff_id_hash on Internal_schema.traders using hash (staff_ID);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:46.527 UTC,"postgres","c18395341_stockbroker_db",3467,"[local]",626d230e.d8b,24,"idle",2022-04-30 11:52:46 UTC,5/289,0,LOG,00000,"statement: CREATE index ix_date_joined_btree on Internal_schema.traders using btree (date_joined);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:46.541 UTC,"postgres","c18395341_stockbroker_db",3467,"[local]",626d230e.d8b,25,"idle",2022-04-30 11:52:46 UTC,5/290,0,LOG,00000,"statement: CREATE index ix_Portfolio_ID on Public_info.Portfolio using hash (Portfolio_ID);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:46.545 UTC,"postgres","c18395341_stockbroker_db",3467,"[local]",626d230e.d8b,26,"idle",2022-04-30 11:52:46 UTC,5/291,0,LOG,00000,"statement: CREATE index ix_record_value on Public_info.prices using btree (record_value);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:52:46.561 UTC,"postgres","c18395341_stockbroker_db",3467,"[local]",626d230e.d8b,27,"idle",2022-04-30 11:52:46 UTC,5/292,0,LOG,00000,"statement: CREATE index ix_current_stock on Internal_schema.positions using btree (current_stock);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:53:16.550 UTC,"postgres","c18395341_stockbroker_db",3473,"[local]",626d232c.d91,1,"idle",2022-04-30 11:53:16 UTC,5/296,0,LOG,00000,"statement: DROP SCHEMA Internal_schema CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:53:16.558 UTC,"postgres","c18395341_stockbroker_db",3473,"[local]",626d232c.d91,2,"idle",2022-04-30 11:53:16 UTC,5/297,0,LOG,00000,"statement: DROP SCHEMA Public_info CASCADE;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:53:16.567 UTC,"postgres","c18395341_stockbroker_db",3473,"[local]",626d232c.d91,3,"idle",2022-04-30 11:53:16 UTC,5/298,0,LOG,00000,"statement: DROP ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:53:16.569 UTC,"postgres","c18395341_stockbroker_db",3473,"[local]",626d232c.d91,4,"idle",2022-04-30 11:53:16 UTC,5/299,0,LOG,00000,"statement: DROP ROLE Customer;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:53:16.571 UTC,"postgres","c18395341_stockbroker_db",3473,"[local]",626d232c.d91,5,"idle",2022-04-30 11:53:16 UTC,5/300,0,LOG,00000,"statement: CREATE SCHEMA Internal_schema;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:53:16.573 UTC,"postgres","c18395341_stockbroker_db",3473,"[local]",626d232c.d91,6,"idle",2022-04-30 11:53:16 UTC,5/301,0,LOG,00000,"statement: CREATE SCHEMA Public_info;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:53:16.574 UTC,"postgres","c18395341_stockbroker_db",3473,"[local]",626d232c.d91,7,"idle",2022-04-30 11:53:16 UTC,5/302,0,LOG,00000,"statement: CREATE ROLE Trader;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:53:16.577 UTC,"postgres","c18395341_stockbroker_db",3473,"[local]",626d232c.d91,8,"idle",2022-04-30 11:53:16 UTC,5/303,0,LOG,00000,"statement: CREATE ROLE Customer WITH LOGIN;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:53:16.578 UTC,"postgres","c18395341_stockbroker_db",3473,"[local]",626d232c.d91,9,"idle",2022-04-30 11:53:16 UTC,5/304,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:53:16.579 UTC,"postgres","c18395341_stockbroker_db",3473,"[local]",626d232c.d91,10,"idle",2022-04-30 11:53:16 UTC,5/305,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info REVOKE ALL ON TABLES FROM PUBLIC;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:53:16.580 UTC,"postgres","c18395341_stockbroker_db",3473,"[local]",626d232c.d91,11,"idle",2022-04-30 11:53:16 UTC,5/306,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:53:16.582 UTC,"postgres","c18395341_stockbroker_db",3473,"[local]",626d232c.d91,12,"idle",2022-04-30 11:53:16 UTC,5/307,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Internal_schema GRANT INSERT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:53:16.583 UTC,"postgres","c18395341_stockbroker_db",3473,"[local]",626d232c.d91,13,"idle",2022-04-30 11:53:16 UTC,5/308,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Customer;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:53:16.585 UTC,"postgres","c18395341_stockbroker_db",3473,"[local]",626d232c.d91,14,"idle",2022-04-30 11:53:16 UTC,5/309,0,LOG,00000,"statement: ALTER DEFAULT PRIVILEGES IN SCHEMA Public_info GRANT SELECT ON TABLES TO Trader;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:53:16.587 UTC,"postgres","c18395341_stockbroker_db",3473,"[local]",626d232c.d91,15,"idle",2022-04-30 11:53:16 UTC,5/310,0,LOG,00000,"statement: CREATE TABLE Public_info.companies(
+	internal_ID VARCHAR ( 50 ) PRIMARY KEY,
+	company_name VARCHAR ( 50 ) UNIQUE NOT NULL,
+	annual_revenue MONEY NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:53:16.621 UTC,"postgres","c18395341_stockbroker_db",3473,"[local]",626d232c.d91,16,"idle",2022-04-30 11:53:16 UTC,5/311,0,LOG,00000,"statement: CREATE TABLE Internal_schema.traders(
+	staff_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Trader_name VARCHAR ( 50 ) NOT NULL,
+	date_joined DATE NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:53:16.634 UTC,"postgres","c18395341_stockbroker_db",3473,"[local]",626d232c.d91,17,"idle",2022-04-30 11:53:16 UTC,5/312,0,LOG,00000,"statement: CREATE TABLE Public_info.Portfolio(
+	Portfolio_ID VARCHAR ( 50 ) PRIMARY KEY,
+	Portfolio_name VARCHAR ( 50 ) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:53:16.681 UTC,"postgres","c18395341_stockbroker_db",3473,"[local]",626d232c.d91,18,"idle",2022-04-30 11:53:16 UTC,5/313,0,LOG,00000,"statement: CREATE TABLE Public_info.prices(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	record_date DATE NOT NULL,
+	record_value MONEY NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:53:16.687 UTC,"postgres","c18395341_stockbroker_db",3473,"[local]",626d232c.d91,19,"idle",2022-04-30 11:53:16 UTC,5/314,0,LOG,00000,"statement: CREATE TABLE Internal_schema.positions(
+	company_ID VARCHAR ( 50 ) references Public_info.companies(internal_ID),
+	Portfolio_ID VARCHAR ( 50 ) references Public_info.Portfolio(Portfolio_ID),
+	current_stock NUMERIC (20,3) NOT NULL);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:53:16.697 UTC,"postgres","c18395341_stockbroker_db",3473,"[local]",626d232c.d91,20,"idle",2022-04-30 11:53:16 UTC,5/315,0,LOG,00000,"statement: CREATE index ix_annual_revenue_btree on Public_info.companies using btree (annual_revenue);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:53:16.712 UTC,"postgres","c18395341_stockbroker_db",3473,"[local]",626d232c.d91,21,"idle",2022-04-30 11:53:16 UTC,5/316,0,LOG,00000,"statement: CREATE index ix_company_name_btree on Public_info.companies using btree (company_name);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:53:16.728 UTC,"postgres","c18395341_stockbroker_db",3473,"[local]",626d232c.d91,22,"idle",2022-04-30 11:53:16 UTC,5/317,0,LOG,00000,"statement: CREATE index ix_staff_id_hash on Internal_schema.traders using hash (staff_ID);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:53:16.731 UTC,"postgres","c18395341_stockbroker_db",3473,"[local]",626d232c.d91,23,"idle",2022-04-30 11:53:16 UTC,5/318,0,LOG,00000,"statement: CREATE index ix_date_joined_btree on Internal_schema.traders using btree (date_joined);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:53:16.746 UTC,"postgres","c18395341_stockbroker_db",3473,"[local]",626d232c.d91,24,"idle",2022-04-30 11:53:16 UTC,5/319,0,LOG,00000,"statement: CREATE index ix_Portfolio_ID on Public_info.Portfolio using hash (Portfolio_ID);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:53:16.750 UTC,"postgres","c18395341_stockbroker_db",3473,"[local]",626d232c.d91,25,"idle",2022-04-30 11:53:16 UTC,5/320,0,LOG,00000,"statement: CREATE index ix_record_value on Public_info.prices using btree (record_value);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:53:16.765 UTC,"postgres","c18395341_stockbroker_db",3473,"[local]",626d232c.d91,26,"idle",2022-04-30 11:53:16 UTC,5/321,0,LOG,00000,"statement: CREATE index ix_current_stock on Internal_schema.positions using btree (current_stock);",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:57:24.065 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,1,"idle",2022-04-30 11:57:19 UTC,6/16,0,LOG,00000,"statement: SELECT n.nspname as ""Schema"",
+  c.relname as ""Name"",
+  CASE c.relkind WHEN 'r' THEN 'table' WHEN 'v' THEN 'view' WHEN 'm' THEN 'materialized view' WHEN 'i' THEN 'index' WHEN 'S' THEN 'sequence' WHEN 's' THEN 'special' WHEN 't' THEN 'TOAST table' WHEN 'f' THEN 'foreign table' WHEN 'p' THEN 'partitioned table' WHEN 'I' THEN 'partitioned index' END as ""Type"",
+  pg_catalog.pg_get_userbyid(c.relowner) as ""Owner""
+FROM pg_catalog.pg_class c
+     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+     LEFT JOIN pg_catalog.pg_am am ON am.oid = c.relam
+WHERE c.relkind IN ('r','p','v','m','S','f','')
+      AND n.nspname <> 'pg_catalog'
+      AND n.nspname !~ '^pg_toast'
+      AND n.nspname <> 'information_schema'
+  AND pg_catalog.pg_table_is_visible(c.oid)
+ORDER BY 1,2;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:58:29.477 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,2,"idle",2022-04-30 11:57:19 UTC,6/17,0,LOG,00000,"statement: SELECT c.oid,
+  n.nspname,
+  c.relname
+FROM pg_catalog.pg_class c
+     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+WHERE c.relname OPERATOR(pg_catalog.~) '^(companies)$' COLLATE pg_catalog.default
+  AND n.nspname OPERATOR(pg_catalog.~) '^(public_info)$' COLLATE pg_catalog.default
+ORDER BY 2, 3;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:58:29.512 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,3,"idle",2022-04-30 11:57:19 UTC,6/18,0,LOG,00000,"statement: SELECT c.relchecks, c.relkind, c.relhasindex, c.relhasrules, c.relhastriggers, c.relrowsecurity, c.relforcerowsecurity, false AS relhasoids, c.relispartition, '', c.reltablespace, CASE WHEN c.reloftype = 0 THEN '' ELSE c.reloftype::pg_catalog.regtype::pg_catalog.text END, c.relpersistence, c.relreplident, am.amname
+FROM pg_catalog.pg_class c
+ LEFT JOIN pg_catalog.pg_class tc ON (c.reltoastrelid = tc.oid)
+LEFT JOIN pg_catalog.pg_am am ON (c.relam = am.oid)
+WHERE c.oid = '16967';",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:58:29.516 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,4,"idle",2022-04-30 11:57:19 UTC,6/19,0,LOG,00000,"statement: SELECT a.attname,
+  pg_catalog.format_type(a.atttypid, a.atttypmod),
+  (SELECT pg_catalog.pg_get_expr(d.adbin, d.adrelid, true)
+   FROM pg_catalog.pg_attrdef d
+   WHERE d.adrelid = a.attrelid AND d.adnum = a.attnum AND a.atthasdef),
+  a.attnotnull,
+  (SELECT c.collname FROM pg_catalog.pg_collation c, pg_catalog.pg_type t
+   WHERE c.oid = a.attcollation AND t.oid = a.atttypid AND a.attcollation <> t.typcollation) AS attcollation,
+  a.attidentity,
+  a.attgenerated
+FROM pg_catalog.pg_attribute a
+WHERE a.attrelid = '16967' AND a.attnum > 0 AND NOT a.attisdropped
+ORDER BY a.attnum;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:58:29.524 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,5,"idle",2022-04-30 11:57:19 UTC,6/20,0,LOG,00000,"statement: SELECT c2.relname, i.indisprimary, i.indisunique, i.indisclustered, i.indisvalid, pg_catalog.pg_get_indexdef(i.indexrelid, 0, true),
+  pg_catalog.pg_get_constraintdef(con.oid, true), contype, condeferrable, condeferred, i.indisreplident, c2.reltablespace
+FROM pg_catalog.pg_class c, pg_catalog.pg_class c2, pg_catalog.pg_index i
+  LEFT JOIN pg_catalog.pg_constraint con ON (conrelid = i.indrelid AND conindid = i.indexrelid AND contype IN ('p','u','x'))
+WHERE c.oid = '16967' AND c.oid = i.indrelid AND i.indexrelid = c2.oid
+ORDER BY i.indisprimary DESC, c2.relname;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:58:29.527 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,6,"idle",2022-04-30 11:57:19 UTC,6/21,0,LOG,00000,"statement: SELECT true as sametable, conname,
+  pg_catalog.pg_get_constraintdef(r.oid, true) as condef,
+  conrelid::pg_catalog.regclass AS ontable
+FROM pg_catalog.pg_constraint r
+WHERE r.conrelid = '16967' AND r.contype = 'f'
+     AND conparentid = 0
+ORDER BY conname",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:58:29.528 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,7,"idle",2022-04-30 11:57:19 UTC,6/22,0,LOG,00000,"statement: SELECT conname, conrelid::pg_catalog.regclass AS ontable,
+       pg_catalog.pg_get_constraintdef(oid, true) AS condef
+  FROM pg_catalog.pg_constraint c
+ WHERE confrelid IN (SELECT pg_catalog.pg_partition_ancestors('16967')
+                     UNION ALL VALUES ('16967'::pg_catalog.regclass))
+       AND contype = 'f' AND conparentid = 0
+ORDER BY conname;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:58:29.536 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,8,"idle",2022-04-30 11:57:19 UTC,6/23,0,LOG,00000,"statement: SELECT pol.polname, pol.polpermissive,
+  CASE WHEN pol.polroles = '{0}' THEN NULL ELSE pg_catalog.array_to_string(array(select rolname from pg_catalog.pg_roles where oid = any (pol.polroles) order by 1),',') END,
+  pg_catalog.pg_get_expr(pol.polqual, pol.polrelid),
+  pg_catalog.pg_get_expr(pol.polwithcheck, pol.polrelid),
+  CASE pol.polcmd
+    WHEN 'r' THEN 'SELECT'
+    WHEN 'a' THEN 'INSERT'
+    WHEN 'w' THEN 'UPDATE'
+    WHEN 'd' THEN 'DELETE'
+    END AS cmd
+FROM pg_catalog.pg_policy pol
+WHERE pol.polrelid = '16967' ORDER BY 1;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:58:29.548 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,9,"idle",2022-04-30 11:57:19 UTC,6/24,0,LOG,00000,"statement: SELECT oid, stxrelid::pg_catalog.regclass, stxnamespace::pg_catalog.regnamespace AS nsp, stxname,
+pg_catalog.pg_get_statisticsobjdef_columns(oid) AS columns,
+  'd' = any(stxkind) AS ndist_enabled,
+  'f' = any(stxkind) AS deps_enabled,
+  'm' = any(stxkind) AS mcv_enabled,
+stxstattarget
+FROM pg_catalog.pg_statistic_ext stat
+WHERE stxrelid = '16967'
+ORDER BY 1;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:58:29.550 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,10,"idle",2022-04-30 11:57:19 UTC,6/25,0,LOG,00000,"statement: SELECT pubname
+FROM pg_catalog.pg_publication p
+JOIN pg_catalog.pg_publication_rel pr ON p.oid = pr.prpubid
+WHERE pr.prrelid = '16967'
+UNION ALL
+SELECT pubname
+FROM pg_catalog.pg_publication p
+WHERE p.puballtables AND pg_catalog.pg_relation_is_publishable('16967')
+ORDER BY 1;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:58:29.555 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,11,"idle",2022-04-30 11:57:19 UTC,6/26,0,LOG,00000,"statement: SELECT t.tgname, pg_catalog.pg_get_triggerdef(t.oid, true), t.tgenabled, t.tgisinternal, (SELECT (NULLIF(a.relid, t.tgrelid))::pg_catalog.regclass FROM pg_catalog.pg_trigger AS u,       pg_catalog.pg_partition_ancestors(t.tgrelid) AS a WHERE u.tgname = t.tgname AND u.tgrelid = a.relid       AND u.tgparentid = 0) AS parent
+FROM pg_catalog.pg_trigger t
+WHERE t.tgrelid = '16967' AND (NOT t.tgisinternal OR (t.tgisinternal AND t.tgenabled = 'D') 
+    OR EXISTS (SELECT 1 FROM pg_catalog.pg_depend WHERE objid = t.oid 
+        AND refclassid = 'pg_catalog.pg_trigger'::pg_catalog.regclass))
+ORDER BY 1;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:58:29.557 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,12,"idle",2022-04-30 11:57:19 UTC,6/27,0,LOG,00000,"statement: SELECT c.oid::pg_catalog.regclass
+FROM pg_catalog.pg_class c, pg_catalog.pg_inherits i
+WHERE c.oid = i.inhparent AND i.inhrelid = '16967'
+  AND c.relkind != 'p' AND c.relkind != 'I'
+ORDER BY inhseqno;",,,,,,,,,"psql","client backend",,0
+2022-04-30 11:58:29.559 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,13,"idle",2022-04-30 11:57:19 UTC,6/28,0,LOG,00000,"statement: SELECT c.oid::pg_catalog.regclass, c.relkind, inhdetachpending, pg_catalog.pg_get_expr(c.relpartbound, c.oid)
+FROM pg_catalog.pg_class c, pg_catalog.pg_inherits i
+WHERE c.oid = i.inhrelid AND i.inhparent = '16967'
+ORDER BY pg_catalog.pg_get_expr(c.relpartbound, c.oid) = 'DEFAULT', c.oid::pg_catalog.regclass::pg_catalog.text;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:00:20.337 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,14,"idle",2022-04-30 11:57:19 UTC,6/29,0,LOG,00000,"statement: SELECT c.oid,
+  n.nspname,
+  c.relname
+FROM pg_catalog.pg_class c
+     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+WHERE c.relname OPERATOR(pg_catalog.~) '^(traders)$' COLLATE pg_catalog.default
+  AND n.nspname OPERATOR(pg_catalog.~) '^(internal_schema)$' COLLATE pg_catalog.default
+ORDER BY 2, 3;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:00:20.338 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,15,"idle",2022-04-30 11:57:19 UTC,6/30,0,LOG,00000,"statement: SELECT c.relchecks, c.relkind, c.relhasindex, c.relhasrules, c.relhastriggers, c.relrowsecurity, c.relforcerowsecurity, false AS relhasoids, c.relispartition, '', c.reltablespace, CASE WHEN c.reloftype = 0 THEN '' ELSE c.reloftype::pg_catalog.regtype::pg_catalog.text END, c.relpersistence, c.relreplident, am.amname
+FROM pg_catalog.pg_class c
+ LEFT JOIN pg_catalog.pg_class tc ON (c.reltoastrelid = tc.oid)
+LEFT JOIN pg_catalog.pg_am am ON (c.relam = am.oid)
+WHERE c.oid = '16974';",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:00:20.339 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,16,"idle",2022-04-30 11:57:19 UTC,6/31,0,LOG,00000,"statement: SELECT a.attname,
+  pg_catalog.format_type(a.atttypid, a.atttypmod),
+  (SELECT pg_catalog.pg_get_expr(d.adbin, d.adrelid, true)
+   FROM pg_catalog.pg_attrdef d
+   WHERE d.adrelid = a.attrelid AND d.adnum = a.attnum AND a.atthasdef),
+  a.attnotnull,
+  (SELECT c.collname FROM pg_catalog.pg_collation c, pg_catalog.pg_type t
+   WHERE c.oid = a.attcollation AND t.oid = a.atttypid AND a.attcollation <> t.typcollation) AS attcollation,
+  a.attidentity,
+  a.attgenerated
+FROM pg_catalog.pg_attribute a
+WHERE a.attrelid = '16974' AND a.attnum > 0 AND NOT a.attisdropped
+ORDER BY a.attnum;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:00:20.340 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,17,"idle",2022-04-30 11:57:19 UTC,6/32,0,LOG,00000,"statement: SELECT c2.relname, i.indisprimary, i.indisunique, i.indisclustered, i.indisvalid, pg_catalog.pg_get_indexdef(i.indexrelid, 0, true),
+  pg_catalog.pg_get_constraintdef(con.oid, true), contype, condeferrable, condeferred, i.indisreplident, c2.reltablespace
+FROM pg_catalog.pg_class c, pg_catalog.pg_class c2, pg_catalog.pg_index i
+  LEFT JOIN pg_catalog.pg_constraint con ON (conrelid = i.indrelid AND conindid = i.indexrelid AND contype IN ('p','u','x'))
+WHERE c.oid = '16974' AND c.oid = i.indrelid AND i.indexrelid = c2.oid
+ORDER BY i.indisprimary DESC, c2.relname;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:00:20.342 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,18,"idle",2022-04-30 11:57:19 UTC,6/33,0,LOG,00000,"statement: SELECT pol.polname, pol.polpermissive,
+  CASE WHEN pol.polroles = '{0}' THEN NULL ELSE pg_catalog.array_to_string(array(select rolname from pg_catalog.pg_roles where oid = any (pol.polroles) order by 1),',') END,
+  pg_catalog.pg_get_expr(pol.polqual, pol.polrelid),
+  pg_catalog.pg_get_expr(pol.polwithcheck, pol.polrelid),
+  CASE pol.polcmd
+    WHEN 'r' THEN 'SELECT'
+    WHEN 'a' THEN 'INSERT'
+    WHEN 'w' THEN 'UPDATE'
+    WHEN 'd' THEN 'DELETE'
+    END AS cmd
+FROM pg_catalog.pg_policy pol
+WHERE pol.polrelid = '16974' ORDER BY 1;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:00:20.343 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,19,"idle",2022-04-30 11:57:19 UTC,6/34,0,LOG,00000,"statement: SELECT oid, stxrelid::pg_catalog.regclass, stxnamespace::pg_catalog.regnamespace AS nsp, stxname,
+pg_catalog.pg_get_statisticsobjdef_columns(oid) AS columns,
+  'd' = any(stxkind) AS ndist_enabled,
+  'f' = any(stxkind) AS deps_enabled,
+  'm' = any(stxkind) AS mcv_enabled,
+stxstattarget
+FROM pg_catalog.pg_statistic_ext stat
+WHERE stxrelid = '16974'
+ORDER BY 1;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:00:20.343 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,20,"idle",2022-04-30 11:57:19 UTC,6/35,0,LOG,00000,"statement: SELECT pubname
+FROM pg_catalog.pg_publication p
+JOIN pg_catalog.pg_publication_rel pr ON p.oid = pr.prpubid
+WHERE pr.prrelid = '16974'
+UNION ALL
+SELECT pubname
+FROM pg_catalog.pg_publication p
+WHERE p.puballtables AND pg_catalog.pg_relation_is_publishable('16974')
+ORDER BY 1;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:00:20.344 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,21,"idle",2022-04-30 11:57:19 UTC,6/36,0,LOG,00000,"statement: SELECT c.oid::pg_catalog.regclass
+FROM pg_catalog.pg_class c, pg_catalog.pg_inherits i
+WHERE c.oid = i.inhparent AND i.inhrelid = '16974'
+  AND c.relkind != 'p' AND c.relkind != 'I'
+ORDER BY inhseqno;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:00:20.345 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,22,"idle",2022-04-30 11:57:19 UTC,6/37,0,LOG,00000,"statement: SELECT c.oid::pg_catalog.regclass, c.relkind, inhdetachpending, pg_catalog.pg_get_expr(c.relpartbound, c.oid)
+FROM pg_catalog.pg_class c, pg_catalog.pg_inherits i
+WHERE c.oid = i.inhrelid AND i.inhparent = '16974'
+ORDER BY pg_catalog.pg_get_expr(c.relpartbound, c.oid) = 'DEFAULT', c.oid::pg_catalog.regclass::pg_catalog.text;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:01:18.607 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,23,"idle",2022-04-30 11:57:19 UTC,6/38,0,LOG,00000,"statement: SELECT c.oid,
+  n.nspname,
+  c.relname
+FROM pg_catalog.pg_class c
+     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+WHERE c.relname OPERATOR(pg_catalog.~) '^(positions)$' COLLATE pg_catalog.default
+  AND n.nspname OPERATOR(pg_catalog.~) '^(internal_schema)$' COLLATE pg_catalog.default
+ORDER BY 2, 3;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:01:18.608 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,24,"idle",2022-04-30 11:57:19 UTC,6/39,0,LOG,00000,"statement: SELECT c.relchecks, c.relkind, c.relhasindex, c.relhasrules, c.relhastriggers, c.relrowsecurity, c.relforcerowsecurity, false AS relhasoids, c.relispartition, '', c.reltablespace, CASE WHEN c.reloftype = 0 THEN '' ELSE c.reloftype::pg_catalog.regtype::pg_catalog.text END, c.relpersistence, c.relreplident, am.amname
+FROM pg_catalog.pg_class c
+ LEFT JOIN pg_catalog.pg_class tc ON (c.reltoastrelid = tc.oid)
+LEFT JOIN pg_catalog.pg_am am ON (c.relam = am.oid)
+WHERE c.oid = '16992';",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:01:18.609 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,25,"idle",2022-04-30 11:57:19 UTC,6/40,0,LOG,00000,"statement: SELECT a.attname,
+  pg_catalog.format_type(a.atttypid, a.atttypmod),
+  (SELECT pg_catalog.pg_get_expr(d.adbin, d.adrelid, true)
+   FROM pg_catalog.pg_attrdef d
+   WHERE d.adrelid = a.attrelid AND d.adnum = a.attnum AND a.atthasdef),
+  a.attnotnull,
+  (SELECT c.collname FROM pg_catalog.pg_collation c, pg_catalog.pg_type t
+   WHERE c.oid = a.attcollation AND t.oid = a.atttypid AND a.attcollation <> t.typcollation) AS attcollation,
+  a.attidentity,
+  a.attgenerated
+FROM pg_catalog.pg_attribute a
+WHERE a.attrelid = '16992' AND a.attnum > 0 AND NOT a.attisdropped
+ORDER BY a.attnum;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:01:18.610 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,26,"idle",2022-04-30 11:57:19 UTC,6/41,0,LOG,00000,"statement: SELECT c2.relname, i.indisprimary, i.indisunique, i.indisclustered, i.indisvalid, pg_catalog.pg_get_indexdef(i.indexrelid, 0, true),
+  pg_catalog.pg_get_constraintdef(con.oid, true), contype, condeferrable, condeferred, i.indisreplident, c2.reltablespace
+FROM pg_catalog.pg_class c, pg_catalog.pg_class c2, pg_catalog.pg_index i
+  LEFT JOIN pg_catalog.pg_constraint con ON (conrelid = i.indrelid AND conindid = i.indexrelid AND contype IN ('p','u','x'))
+WHERE c.oid = '16992' AND c.oid = i.indrelid AND i.indexrelid = c2.oid
+ORDER BY i.indisprimary DESC, c2.relname;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:01:18.611 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,27,"idle",2022-04-30 11:57:19 UTC,6/42,0,LOG,00000,"statement: SELECT true as sametable, conname,
+  pg_catalog.pg_get_constraintdef(r.oid, true) as condef,
+  conrelid::pg_catalog.regclass AS ontable
+FROM pg_catalog.pg_constraint r
+WHERE r.conrelid = '16992' AND r.contype = 'f'
+     AND conparentid = 0
+ORDER BY conname",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:01:18.612 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,28,"idle",2022-04-30 11:57:19 UTC,6/43,0,LOG,00000,"statement: SELECT conname, conrelid::pg_catalog.regclass AS ontable,
+       pg_catalog.pg_get_constraintdef(oid, true) AS condef
+  FROM pg_catalog.pg_constraint c
+ WHERE confrelid IN (SELECT pg_catalog.pg_partition_ancestors('16992')
+                     UNION ALL VALUES ('16992'::pg_catalog.regclass))
+       AND contype = 'f' AND conparentid = 0
+ORDER BY conname;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:01:18.613 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,29,"idle",2022-04-30 11:57:19 UTC,6/44,0,LOG,00000,"statement: SELECT pol.polname, pol.polpermissive,
+  CASE WHEN pol.polroles = '{0}' THEN NULL ELSE pg_catalog.array_to_string(array(select rolname from pg_catalog.pg_roles where oid = any (pol.polroles) order by 1),',') END,
+  pg_catalog.pg_get_expr(pol.polqual, pol.polrelid),
+  pg_catalog.pg_get_expr(pol.polwithcheck, pol.polrelid),
+  CASE pol.polcmd
+    WHEN 'r' THEN 'SELECT'
+    WHEN 'a' THEN 'INSERT'
+    WHEN 'w' THEN 'UPDATE'
+    WHEN 'd' THEN 'DELETE'
+    END AS cmd
+FROM pg_catalog.pg_policy pol
+WHERE pol.polrelid = '16992' ORDER BY 1;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:01:18.614 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,30,"idle",2022-04-30 11:57:19 UTC,6/45,0,LOG,00000,"statement: SELECT oid, stxrelid::pg_catalog.regclass, stxnamespace::pg_catalog.regnamespace AS nsp, stxname,
+pg_catalog.pg_get_statisticsobjdef_columns(oid) AS columns,
+  'd' = any(stxkind) AS ndist_enabled,
+  'f' = any(stxkind) AS deps_enabled,
+  'm' = any(stxkind) AS mcv_enabled,
+stxstattarget
+FROM pg_catalog.pg_statistic_ext stat
+WHERE stxrelid = '16992'
+ORDER BY 1;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:01:18.614 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,31,"idle",2022-04-30 11:57:19 UTC,6/46,0,LOG,00000,"statement: SELECT pubname
+FROM pg_catalog.pg_publication p
+JOIN pg_catalog.pg_publication_rel pr ON p.oid = pr.prpubid
+WHERE pr.prrelid = '16992'
+UNION ALL
+SELECT pubname
+FROM pg_catalog.pg_publication p
+WHERE p.puballtables AND pg_catalog.pg_relation_is_publishable('16992')
+ORDER BY 1;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:01:18.615 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,32,"idle",2022-04-30 11:57:19 UTC,6/47,0,LOG,00000,"statement: SELECT t.tgname, pg_catalog.pg_get_triggerdef(t.oid, true), t.tgenabled, t.tgisinternal, (SELECT (NULLIF(a.relid, t.tgrelid))::pg_catalog.regclass FROM pg_catalog.pg_trigger AS u,       pg_catalog.pg_partition_ancestors(t.tgrelid) AS a WHERE u.tgname = t.tgname AND u.tgrelid = a.relid       AND u.tgparentid = 0) AS parent
+FROM pg_catalog.pg_trigger t
+WHERE t.tgrelid = '16992' AND (NOT t.tgisinternal OR (t.tgisinternal AND t.tgenabled = 'D') 
+    OR EXISTS (SELECT 1 FROM pg_catalog.pg_depend WHERE objid = t.oid 
+        AND refclassid = 'pg_catalog.pg_trigger'::pg_catalog.regclass))
+ORDER BY 1;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:01:18.616 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,33,"idle",2022-04-30 11:57:19 UTC,6/48,0,LOG,00000,"statement: SELECT c.oid::pg_catalog.regclass
+FROM pg_catalog.pg_class c, pg_catalog.pg_inherits i
+WHERE c.oid = i.inhparent AND i.inhrelid = '16992'
+  AND c.relkind != 'p' AND c.relkind != 'I'
+ORDER BY inhseqno;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:01:18.616 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,34,"idle",2022-04-30 11:57:19 UTC,6/49,0,LOG,00000,"statement: SELECT c.oid::pg_catalog.regclass, c.relkind, inhdetachpending, pg_catalog.pg_get_expr(c.relpartbound, c.oid)
+FROM pg_catalog.pg_class c, pg_catalog.pg_inherits i
+WHERE c.oid = i.inhrelid AND i.inhparent = '16992'
+ORDER BY pg_catalog.pg_get_expr(c.relpartbound, c.oid) = 'DEFAULT', c.oid::pg_catalog.regclass::pg_catalog.text;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:02:12.513 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,35,"idle",2022-04-30 11:57:19 UTC,6/50,0,LOG,00000,"statement: SELECT c.oid,
+  n.nspname,
+  c.relname
+FROM pg_catalog.pg_class c
+     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+WHERE c.relname OPERATOR(pg_catalog.~) '^(portfolio)$' COLLATE pg_catalog.default
+  AND n.nspname OPERATOR(pg_catalog.~) '^(public_info)$' COLLATE pg_catalog.default
+ORDER BY 2, 3;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:02:12.514 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,36,"idle",2022-04-30 11:57:19 UTC,6/51,0,LOG,00000,"statement: SELECT c.relchecks, c.relkind, c.relhasindex, c.relhasrules, c.relhastriggers, c.relrowsecurity, c.relforcerowsecurity, false AS relhasoids, c.relispartition, '', c.reltablespace, CASE WHEN c.reloftype = 0 THEN '' ELSE c.reloftype::pg_catalog.regtype::pg_catalog.text END, c.relpersistence, c.relreplident, am.amname
+FROM pg_catalog.pg_class c
+ LEFT JOIN pg_catalog.pg_class tc ON (c.reltoastrelid = tc.oid)
+LEFT JOIN pg_catalog.pg_am am ON (c.relam = am.oid)
+WHERE c.oid = '16979';",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:02:12.515 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,37,"idle",2022-04-30 11:57:19 UTC,6/52,0,LOG,00000,"statement: SELECT a.attname,
+  pg_catalog.format_type(a.atttypid, a.atttypmod),
+  (SELECT pg_catalog.pg_get_expr(d.adbin, d.adrelid, true)
+   FROM pg_catalog.pg_attrdef d
+   WHERE d.adrelid = a.attrelid AND d.adnum = a.attnum AND a.atthasdef),
+  a.attnotnull,
+  (SELECT c.collname FROM pg_catalog.pg_collation c, pg_catalog.pg_type t
+   WHERE c.oid = a.attcollation AND t.oid = a.atttypid AND a.attcollation <> t.typcollation) AS attcollation,
+  a.attidentity,
+  a.attgenerated
+FROM pg_catalog.pg_attribute a
+WHERE a.attrelid = '16979' AND a.attnum > 0 AND NOT a.attisdropped
+ORDER BY a.attnum;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:02:12.516 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,38,"idle",2022-04-30 11:57:19 UTC,6/53,0,LOG,00000,"statement: SELECT c2.relname, i.indisprimary, i.indisunique, i.indisclustered, i.indisvalid, pg_catalog.pg_get_indexdef(i.indexrelid, 0, true),
+  pg_catalog.pg_get_constraintdef(con.oid, true), contype, condeferrable, condeferred, i.indisreplident, c2.reltablespace
+FROM pg_catalog.pg_class c, pg_catalog.pg_class c2, pg_catalog.pg_index i
+  LEFT JOIN pg_catalog.pg_constraint con ON (conrelid = i.indrelid AND conindid = i.indexrelid AND contype IN ('p','u','x'))
+WHERE c.oid = '16979' AND c.oid = i.indrelid AND i.indexrelid = c2.oid
+ORDER BY i.indisprimary DESC, c2.relname;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:02:12.518 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,39,"idle",2022-04-30 11:57:19 UTC,6/54,0,LOG,00000,"statement: SELECT true as sametable, conname,
+  pg_catalog.pg_get_constraintdef(r.oid, true) as condef,
+  conrelid::pg_catalog.regclass AS ontable
+FROM pg_catalog.pg_constraint r
+WHERE r.conrelid = '16979' AND r.contype = 'f'
+     AND conparentid = 0
+ORDER BY conname",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:02:12.518 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,40,"idle",2022-04-30 11:57:19 UTC,6/55,0,LOG,00000,"statement: SELECT conname, conrelid::pg_catalog.regclass AS ontable,
+       pg_catalog.pg_get_constraintdef(oid, true) AS condef
+  FROM pg_catalog.pg_constraint c
+ WHERE confrelid IN (SELECT pg_catalog.pg_partition_ancestors('16979')
+                     UNION ALL VALUES ('16979'::pg_catalog.regclass))
+       AND contype = 'f' AND conparentid = 0
+ORDER BY conname;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:02:12.520 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,41,"idle",2022-04-30 11:57:19 UTC,6/56,0,LOG,00000,"statement: SELECT pol.polname, pol.polpermissive,
+  CASE WHEN pol.polroles = '{0}' THEN NULL ELSE pg_catalog.array_to_string(array(select rolname from pg_catalog.pg_roles where oid = any (pol.polroles) order by 1),',') END,
+  pg_catalog.pg_get_expr(pol.polqual, pol.polrelid),
+  pg_catalog.pg_get_expr(pol.polwithcheck, pol.polrelid),
+  CASE pol.polcmd
+    WHEN 'r' THEN 'SELECT'
+    WHEN 'a' THEN 'INSERT'
+    WHEN 'w' THEN 'UPDATE'
+    WHEN 'd' THEN 'DELETE'
+    END AS cmd
+FROM pg_catalog.pg_policy pol
+WHERE pol.polrelid = '16979' ORDER BY 1;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:02:12.520 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,42,"idle",2022-04-30 11:57:19 UTC,6/57,0,LOG,00000,"statement: SELECT oid, stxrelid::pg_catalog.regclass, stxnamespace::pg_catalog.regnamespace AS nsp, stxname,
+pg_catalog.pg_get_statisticsobjdef_columns(oid) AS columns,
+  'd' = any(stxkind) AS ndist_enabled,
+  'f' = any(stxkind) AS deps_enabled,
+  'm' = any(stxkind) AS mcv_enabled,
+stxstattarget
+FROM pg_catalog.pg_statistic_ext stat
+WHERE stxrelid = '16979'
+ORDER BY 1;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:02:12.521 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,43,"idle",2022-04-30 11:57:19 UTC,6/58,0,LOG,00000,"statement: SELECT pubname
+FROM pg_catalog.pg_publication p
+JOIN pg_catalog.pg_publication_rel pr ON p.oid = pr.prpubid
+WHERE pr.prrelid = '16979'
+UNION ALL
+SELECT pubname
+FROM pg_catalog.pg_publication p
+WHERE p.puballtables AND pg_catalog.pg_relation_is_publishable('16979')
+ORDER BY 1;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:02:12.522 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,44,"idle",2022-04-30 11:57:19 UTC,6/59,0,LOG,00000,"statement: SELECT t.tgname, pg_catalog.pg_get_triggerdef(t.oid, true), t.tgenabled, t.tgisinternal, (SELECT (NULLIF(a.relid, t.tgrelid))::pg_catalog.regclass FROM pg_catalog.pg_trigger AS u,       pg_catalog.pg_partition_ancestors(t.tgrelid) AS a WHERE u.tgname = t.tgname AND u.tgrelid = a.relid       AND u.tgparentid = 0) AS parent
+FROM pg_catalog.pg_trigger t
+WHERE t.tgrelid = '16979' AND (NOT t.tgisinternal OR (t.tgisinternal AND t.tgenabled = 'D') 
+    OR EXISTS (SELECT 1 FROM pg_catalog.pg_depend WHERE objid = t.oid 
+        AND refclassid = 'pg_catalog.pg_trigger'::pg_catalog.regclass))
+ORDER BY 1;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:02:12.522 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,45,"idle",2022-04-30 11:57:19 UTC,6/60,0,LOG,00000,"statement: SELECT c.oid::pg_catalog.regclass
+FROM pg_catalog.pg_class c, pg_catalog.pg_inherits i
+WHERE c.oid = i.inhparent AND i.inhrelid = '16979'
+  AND c.relkind != 'p' AND c.relkind != 'I'
+ORDER BY inhseqno;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:02:12.523 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,46,"idle",2022-04-30 11:57:19 UTC,6/61,0,LOG,00000,"statement: SELECT c.oid::pg_catalog.regclass, c.relkind, inhdetachpending, pg_catalog.pg_get_expr(c.relpartbound, c.oid)
+FROM pg_catalog.pg_class c, pg_catalog.pg_inherits i
+WHERE c.oid = i.inhrelid AND i.inhparent = '16979'
+ORDER BY pg_catalog.pg_get_expr(c.relpartbound, c.oid) = 'DEFAULT', c.oid::pg_catalog.regclass::pg_catalog.text;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:02:40.327 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,47,"idle",2022-04-30 11:57:19 UTC,6/62,0,LOG,00000,"statement: SELECT c.oid,
+  n.nspname,
+  c.relname
+FROM pg_catalog.pg_class c
+     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+WHERE c.relname OPERATOR(pg_catalog.~) '^(prices)$' COLLATE pg_catalog.default
+  AND n.nspname OPERATOR(pg_catalog.~) '^(public_info)$' COLLATE pg_catalog.default
+ORDER BY 2, 3;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:02:40.328 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,48,"idle",2022-04-30 11:57:19 UTC,6/63,0,LOG,00000,"statement: SELECT c.relchecks, c.relkind, c.relhasindex, c.relhasrules, c.relhastriggers, c.relrowsecurity, c.relforcerowsecurity, false AS relhasoids, c.relispartition, '', c.reltablespace, CASE WHEN c.reloftype = 0 THEN '' ELSE c.reloftype::pg_catalog.regtype::pg_catalog.text END, c.relpersistence, c.relreplident, am.amname
+FROM pg_catalog.pg_class c
+ LEFT JOIN pg_catalog.pg_class tc ON (c.reltoastrelid = tc.oid)
+LEFT JOIN pg_catalog.pg_am am ON (c.relam = am.oid)
+WHERE c.oid = '16984';",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:02:40.328 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,49,"idle",2022-04-30 11:57:19 UTC,6/64,0,LOG,00000,"statement: SELECT a.attname,
+  pg_catalog.format_type(a.atttypid, a.atttypmod),
+  (SELECT pg_catalog.pg_get_expr(d.adbin, d.adrelid, true)
+   FROM pg_catalog.pg_attrdef d
+   WHERE d.adrelid = a.attrelid AND d.adnum = a.attnum AND a.atthasdef),
+  a.attnotnull,
+  (SELECT c.collname FROM pg_catalog.pg_collation c, pg_catalog.pg_type t
+   WHERE c.oid = a.attcollation AND t.oid = a.atttypid AND a.attcollation <> t.typcollation) AS attcollation,
+  a.attidentity,
+  a.attgenerated
+FROM pg_catalog.pg_attribute a
+WHERE a.attrelid = '16984' AND a.attnum > 0 AND NOT a.attisdropped
+ORDER BY a.attnum;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:02:40.329 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,50,"idle",2022-04-30 11:57:19 UTC,6/65,0,LOG,00000,"statement: SELECT c2.relname, i.indisprimary, i.indisunique, i.indisclustered, i.indisvalid, pg_catalog.pg_get_indexdef(i.indexrelid, 0, true),
+  pg_catalog.pg_get_constraintdef(con.oid, true), contype, condeferrable, condeferred, i.indisreplident, c2.reltablespace
+FROM pg_catalog.pg_class c, pg_catalog.pg_class c2, pg_catalog.pg_index i
+  LEFT JOIN pg_catalog.pg_constraint con ON (conrelid = i.indrelid AND conindid = i.indexrelid AND contype IN ('p','u','x'))
+WHERE c.oid = '16984' AND c.oid = i.indrelid AND i.indexrelid = c2.oid
+ORDER BY i.indisprimary DESC, c2.relname;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:02:40.330 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,51,"idle",2022-04-30 11:57:19 UTC,6/66,0,LOG,00000,"statement: SELECT true as sametable, conname,
+  pg_catalog.pg_get_constraintdef(r.oid, true) as condef,
+  conrelid::pg_catalog.regclass AS ontable
+FROM pg_catalog.pg_constraint r
+WHERE r.conrelid = '16984' AND r.contype = 'f'
+     AND conparentid = 0
+ORDER BY conname",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:02:40.331 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,52,"idle",2022-04-30 11:57:19 UTC,6/67,0,LOG,00000,"statement: SELECT conname, conrelid::pg_catalog.regclass AS ontable,
+       pg_catalog.pg_get_constraintdef(oid, true) AS condef
+  FROM pg_catalog.pg_constraint c
+ WHERE confrelid IN (SELECT pg_catalog.pg_partition_ancestors('16984')
+                     UNION ALL VALUES ('16984'::pg_catalog.regclass))
+       AND contype = 'f' AND conparentid = 0
+ORDER BY conname;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:02:40.332 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,53,"idle",2022-04-30 11:57:19 UTC,6/68,0,LOG,00000,"statement: SELECT pol.polname, pol.polpermissive,
+  CASE WHEN pol.polroles = '{0}' THEN NULL ELSE pg_catalog.array_to_string(array(select rolname from pg_catalog.pg_roles where oid = any (pol.polroles) order by 1),',') END,
+  pg_catalog.pg_get_expr(pol.polqual, pol.polrelid),
+  pg_catalog.pg_get_expr(pol.polwithcheck, pol.polrelid),
+  CASE pol.polcmd
+    WHEN 'r' THEN 'SELECT'
+    WHEN 'a' THEN 'INSERT'
+    WHEN 'w' THEN 'UPDATE'
+    WHEN 'd' THEN 'DELETE'
+    END AS cmd
+FROM pg_catalog.pg_policy pol
+WHERE pol.polrelid = '16984' ORDER BY 1;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:02:40.332 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,54,"idle",2022-04-30 11:57:19 UTC,6/69,0,LOG,00000,"statement: SELECT oid, stxrelid::pg_catalog.regclass, stxnamespace::pg_catalog.regnamespace AS nsp, stxname,
+pg_catalog.pg_get_statisticsobjdef_columns(oid) AS columns,
+  'd' = any(stxkind) AS ndist_enabled,
+  'f' = any(stxkind) AS deps_enabled,
+  'm' = any(stxkind) AS mcv_enabled,
+stxstattarget
+FROM pg_catalog.pg_statistic_ext stat
+WHERE stxrelid = '16984'
+ORDER BY 1;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:02:40.332 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,55,"idle",2022-04-30 11:57:19 UTC,6/70,0,LOG,00000,"statement: SELECT pubname
+FROM pg_catalog.pg_publication p
+JOIN pg_catalog.pg_publication_rel pr ON p.oid = pr.prpubid
+WHERE pr.prrelid = '16984'
+UNION ALL
+SELECT pubname
+FROM pg_catalog.pg_publication p
+WHERE p.puballtables AND pg_catalog.pg_relation_is_publishable('16984')
+ORDER BY 1;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:02:40.333 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,56,"idle",2022-04-30 11:57:19 UTC,6/71,0,LOG,00000,"statement: SELECT t.tgname, pg_catalog.pg_get_triggerdef(t.oid, true), t.tgenabled, t.tgisinternal, (SELECT (NULLIF(a.relid, t.tgrelid))::pg_catalog.regclass FROM pg_catalog.pg_trigger AS u,       pg_catalog.pg_partition_ancestors(t.tgrelid) AS a WHERE u.tgname = t.tgname AND u.tgrelid = a.relid       AND u.tgparentid = 0) AS parent
+FROM pg_catalog.pg_trigger t
+WHERE t.tgrelid = '16984' AND (NOT t.tgisinternal OR (t.tgisinternal AND t.tgenabled = 'D') 
+    OR EXISTS (SELECT 1 FROM pg_catalog.pg_depend WHERE objid = t.oid 
+        AND refclassid = 'pg_catalog.pg_trigger'::pg_catalog.regclass))
+ORDER BY 1;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:02:40.334 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,57,"idle",2022-04-30 11:57:19 UTC,6/72,0,LOG,00000,"statement: SELECT c.oid::pg_catalog.regclass
+FROM pg_catalog.pg_class c, pg_catalog.pg_inherits i
+WHERE c.oid = i.inhparent AND i.inhrelid = '16984'
+  AND c.relkind != 'p' AND c.relkind != 'I'
+ORDER BY inhseqno;",,,,,,,,,"psql","client backend",,0
+2022-04-30 12:02:40.334 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,58,"idle",2022-04-30 11:57:19 UTC,6/73,0,LOG,00000,"statement: SELECT c.oid::pg_catalog.regclass, c.relkind, inhdetachpending, pg_catalog.pg_get_expr(c.relpartbound, c.oid)
+FROM pg_catalog.pg_class c, pg_catalog.pg_inherits i
+WHERE c.oid = i.inhrelid AND i.inhparent = '16984'
+ORDER BY pg_catalog.pg_get_expr(c.relpartbound, c.oid) = 'DEFAULT', c.oid::pg_catalog.regclass::pg_catalog.text;",,,,,,,,,"psql","client backend",,0
+2022-05-01 12:56:41.148 UTC,"postgres","c18395341_stockbroker_db",3508,"[local]",626d241f.db4,59,"idle",2022-04-30 11:57:19 UTC,6/74,0,LOG,00000,"statement: SELECT spcname AS ""Name"",
+  pg_catalog.pg_get_userbyid(spcowner) AS ""Owner"",
+  pg_catalog.pg_tablespace_location(oid) AS ""Location"",
+  pg_catalog.array_to_string(spcacl, E'\n') AS ""Access privileges"",
+  spcoptions AS ""Options"",
+  pg_catalog.pg_size_pretty(pg_catalog.pg_tablespace_size(oid)) AS ""Size"",
+  pg_catalog.shobj_description(oid, 'pg_tablespace') AS ""Description""
+FROM pg_catalog.pg_tablespace
+ORDER BY 1;",,,,,,,,,"psql","client backend",,0

@@ -1,0 +1,8 @@
+2022-04-27 11:12:07.623 UTC,,,1783,,6267f30e.6f7,8,,2022-04-26 13:26:38 UTC,,0,LOG,00000,"received SIGHUP, reloading configuration files",,,,,,,,,"","postmaster",,0
+2022-04-27 11:12:07.624 UTC,,,1783,,6267f30e.6f7,9,,2022-04-26 13:26:38 UTC,,0,LOG,00000,"parameter ""log_statement"" changed to ""all""",,,,,,,,,"","postmaster",,0
+2022-04-27 11:12:07.631 UTC,,,1783,,6267f30e.6f7,10,,2022-04-26 13:26:38 UTC,,0,LOG,00000,"received smart shutdown request",,,,,,,,,"","postmaster",,0
+2022-04-27 11:12:07.631 UTC,"postgres","c18395341_stockbroker_db",2655,"[local]",6269239b.a5f,1,"idle",2022-04-27 11:06:03 UTC,4/0,0,FATAL,57P01,"terminating connection due to administrator command",,,,,,,,,"psql","client backend",,0
+2022-04-27 11:12:07.694 UTC,,,1783,,6267f30e.6f7,11,,2022-04-26 13:26:38 UTC,,0,LOG,00000,"received SIGHUP, reloading configuration files",,,,,,,,,"","postmaster",,0
+2022-04-27 11:12:07.695 UTC,,,1783,,6267f30e.6f7,12,,2022-04-26 13:26:38 UTC,,0,LOG,00000,"background worker ""logical replication launcher"" (PID 1794) exited with exit code 1",,,,,,,,,"","postmaster",,0
+2022-04-27 11:12:07.696 UTC,,,1789,,6267f30e.6fd,1,,2022-04-26 13:26:38 UTC,,0,LOG,00000,"shutting down",,,,,,,,,"","checkpointer",,0
+2022-04-27 11:12:08.115 UTC,,,1783,,6267f30e.6f7,13,,2022-04-26 13:26:38 UTC,,0,LOG,00000,"database system is shut down",,,,,,,,,"","postmaster",,0

@@ -1,0 +1,16 @@
+2022-04-26 12:42:10.178 UTC,,,1773,,6267e8a2.6ed,1,,2022-04-26 12:42:10 UTC,,0,LOG,00000,"ending log output to stderr",,"Future log output will go to log destination ""csvlog"".",,,,,,,"","postmaster",,0
+2022-04-26 12:42:10.178 UTC,,,1773,,6267e8a2.6ed,2,,2022-04-26 12:42:10 UTC,,0,LOG,00000,"starting PostgreSQL 14.1 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit",,,,,,,,,"","postmaster",,0
+2022-04-26 12:42:10.179 UTC,,,1773,,6267e8a2.6ed,3,,2022-04-26 12:42:10 UTC,,0,LOG,00000,"listening on IPv4 address ""127.0.0.1"", port 5432",,,,,,,,,"","postmaster",,0
+2022-04-26 12:42:10.189 UTC,,,1773,,6267e8a2.6ed,4,,2022-04-26 12:42:10 UTC,,0,LOG,00000,"listening on Unix socket ""/tmp/.s.PGSQL.5432""",,,,,,,,,"","postmaster",,0
+2022-04-26 12:42:10.215 UTC,,,1778,,6267e8a2.6f2,1,,2022-04-26 12:42:10 UTC,,0,LOG,00000,"database system was shut down at 2022-04-26 12:39:27 UTC",,,,,,,,,"","startup",,0
+2022-04-26 12:42:10.239 UTC,,,1773,,6267e8a2.6ed,5,,2022-04-26 12:42:10 UTC,,0,LOG,00000,"database system is ready to accept connections",,,,,,,,,"","postmaster",,0
+2022-04-26 12:50:19.325 UTC,,,1773,,6267e8a2.6ed,6,,2022-04-26 12:42:10 UTC,,0,LOG,00000,"received SIGHUP, reloading configuration files",,,,,,,,,"","postmaster",,0
+2022-04-26 13:07:52.102 UTC,,,1773,,6267e8a2.6ed,7,,2022-04-26 12:42:10 UTC,,0,LOG,00000,"received smart shutdown request",,,,,,,,,"","postmaster",,0
+2022-04-26 13:07:52.103 UTC,"postgres","c18395341_stockbroker_db",1907,"[local]",6267ebe2.773,1,"idle",2022-04-26 12:56:02 UTC,4/0,0,FATAL,57P01,"terminating connection due to administrator command",,,,,,,,,"psql","client backend",,0
+2022-04-26 13:07:52.103 UTC,"postgres","c18395341_stockbroker_db",1907,"[local]",6267ebe2.773,2,"idle",2022-04-26 12:56:02 UTC,4/0,0,LOG,08006,"could not send data to client: Broken pipe",,,,,,,,,"psql","client backend",,0
+2022-04-26 13:07:52.104 UTC,"postgres","c18395341_stockbroker_db",1793,"[local]",6267e8e0.701,1,"idle",2022-04-26 12:43:12 UTC,3/0,0,FATAL,57P01,"terminating connection due to administrator command",,,,,,,,,"psql","client backend",,0
+2022-04-26 13:07:52.104 UTC,"postgres","c18395341_stockbroker_db",1793,"[local]",6267e8e0.701,2,"idle",2022-04-26 12:43:12 UTC,3/0,0,LOG,08006,"could not send data to client: Broken pipe",,,,,,,,,"psql","client backend",,0
+2022-04-26 13:07:52.162 UTC,,,1773,,6267e8a2.6ed,8,,2022-04-26 12:42:10 UTC,,0,LOG,00000,"received SIGHUP, reloading configuration files",,,,,,,,,"","postmaster",,0
+2022-04-26 13:07:52.163 UTC,,,1773,,6267e8a2.6ed,9,,2022-04-26 12:42:10 UTC,,0,LOG,00000,"background worker ""logical replication launcher"" (PID 1784) exited with exit code 1",,,,,,,,,"","postmaster",,0
+2022-04-26 13:07:52.163 UTC,,,1779,,6267e8a2.6f3,1,,2022-04-26 12:42:10 UTC,,0,LOG,00000,"shutting down",,,,,,,,,"","checkpointer",,0
+2022-04-26 13:07:52.198 UTC,,,1773,,6267e8a2.6ed,10,,2022-04-26 12:42:10 UTC,,0,LOG,00000,"database system is shut down",,,,,,,,,"","postmaster",,0

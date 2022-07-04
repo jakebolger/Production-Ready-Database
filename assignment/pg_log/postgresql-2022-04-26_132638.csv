@@ -1,0 +1,8 @@
+2022-04-26 13:26:38.592 UTC,,,1783,,6267f30e.6f7,1,,2022-04-26 13:26:38 UTC,,0,LOG,00000,"ending log output to stderr",,"Future log output will go to log destination ""csvlog"".",,,,,,,"","postmaster",,0
+2022-04-26 13:26:38.592 UTC,,,1783,,6267f30e.6f7,2,,2022-04-26 13:26:38 UTC,,0,LOG,00000,"starting PostgreSQL 14.1 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit",,,,,,,,,"","postmaster",,0
+2022-04-26 13:26:38.593 UTC,,,1783,,6267f30e.6f7,3,,2022-04-26 13:26:38 UTC,,0,LOG,00000,"listening on IPv4 address ""127.0.0.1"", port 5432",,,,,,,,,"","postmaster",,0
+2022-04-26 13:26:38.603 UTC,,,1783,,6267f30e.6f7,4,,2022-04-26 13:26:38 UTC,,0,LOG,00000,"listening on Unix socket ""/tmp/.s.PGSQL.5432""",,,,,,,,,"","postmaster",,0
+2022-04-26 13:26:38.631 UTC,,,1788,,6267f30e.6fc,1,,2022-04-26 13:26:38 UTC,,0,LOG,00000,"database system was shut down at 2022-04-26 13:07:52 UTC",,,,,,,,,"","startup",,0
+2022-04-26 13:26:38.656 UTC,,,1783,,6267f30e.6f7,5,,2022-04-26 13:26:38 UTC,,0,LOG,00000,"database system is ready to accept connections",,,,,,,,,"","postmaster",,0
+2022-04-26 13:28:19.403 UTC,,,1783,,6267f30e.6f7,6,,2022-04-26 13:26:38 UTC,,0,LOG,00000,"received SIGHUP, reloading configuration files",,,,,,,,,"","postmaster",,0
+2022-04-27 11:07:04.268 UTC,,,1783,,6267f30e.6f7,7,,2022-04-26 13:26:38 UTC,,0,LOG,00000,"received SIGHUP, reloading configuration files",,,,,,,,,"","postmaster",,0
